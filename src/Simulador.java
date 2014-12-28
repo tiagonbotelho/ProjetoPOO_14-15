@@ -43,28 +43,28 @@ public class Simulador {
         return robot;
     }
 
-    public void newAmbient() {
-           /*TODO complete this function*/
+    public static Ambiente newAmbient() {
+        int height,width,lifeSpan,campoVisao;
+        Ambiente novo;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduza o tamanho do novo ambiente.");
+        System.out.println("Altura: ");
+        height = sc.nextInt();
+        System.out.println("Largura: ");
+        width = sc.nextInt();
+        System.out.println("Qual o tempo de vida dos robots que pretende?");
+        lifeSpan = sc.nextInt();
+        System.out.println("Qual o tamanho do campo de visão dos robots que pretende?");
+        campoVisao = sc.nextInt();
+        novo = new Ambiente(width,height, lifeSpan, campoVisao);
+        return novo;
     }
 
     public static void main(String[] args) {
         int option1,option2;
-        int altura;
-        int largura;
-        int lifeSpan;
-        int campoVisao;
         Scanner sc = new Scanner(System.in);
         System.out.println("Hello! Welcome to Robierto Simulator!");
-        System.out.println("Introduza o tamanho do Ambiente em que quer testar: ");
-        System.out.println("Altura: ");
-        altura=sc.nextInt();
-        System.out.println("Largura: ");
-        largura=sc.nextInt();
-        System.out.println("Introduza o respetivo tempo de vida do ambiente: ");
-        lifeSpan=sc.nextInt();
-        System.out.println("Defina o campo de visao do robot: ");
-        campoVisao=sc.nextInt();
-        a=new Ambiente(largura, altura, lifeSpan, campoVisao);
+        a=newAmbient();
         a.preenche_ambiente();
         loop : while(true){
             System.out.println("1.Deseja mover um Agente");
@@ -75,7 +75,8 @@ public class Simulador {
             System.out.println("6.Deseja ver todas as posições pelo qual os robots passaram");
             System.out.println("7.Adicionar novo Robot");
             System.out.println("8.Eliminar um Robot(0 para sair)");
-            System.out.println("9.Sair");
+            System.out.println("9.Deseja fazer um ambiente novo");
+            System.out.println("10.Sair");
             option1=sc.nextInt();
             switch(option1){
                 case 1:
@@ -111,6 +112,9 @@ public class Simulador {
                     }
                     break;
                 case 9:
+                    a = newAmbient();
+                    break;
+                case 10:
                     break loop;
                 default:
                     System.out.println("Inválido");
