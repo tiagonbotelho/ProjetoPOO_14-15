@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -94,7 +95,7 @@ public class Ambiente {
         }
     }
 
-    public Entidade get_entity_by_id(int id){ //Devolve entidade que tenho o id passado como argumento, caso nao exista devolve null
+    public Entidade get_entity_by_id(int id){ //Devolve entidade que tenha o id passado como argumento, caso nao exista devolve null
         for(Entidade e:entidades){
             if(e.getId() == id){
                 return e;

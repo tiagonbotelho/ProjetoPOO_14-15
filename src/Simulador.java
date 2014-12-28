@@ -1,3 +1,4 @@
+
 import java.util.*;
 import java.lang.*;
 
@@ -19,11 +20,6 @@ public class Simulador {
         System.out.println(" 2.HammingJumper\n");
         System.out.println(" 3.DistanceJumper\n");
         option1=s.nextInt();
-        while(option1 != 1 && option1 != 2 && option1 != 3) {
-        	System.out.print("Opcao nao valida por favor introduza uma opcao valida: ");
-        	option1=s.nextInt();
-        	
-        }
         System.out.println("Introduza uma forma: ");
         forma=s.next();
         System.out.println("Introduza uma cor: ");
@@ -70,8 +66,7 @@ public class Simulador {
         campoVisao=sc.nextInt();
         a=new Ambiente(largura, altura, lifeSpan, campoVisao);
         a.preenche_ambiente();
-        criaAgente(lifeSpan); /*TODO delete this line*/
-        loop : while(a.countAgents()> 0){
+        loop : while(true){
             System.out.println("1.Deseja mover um Agente");
             System.out.println("2.Deseja ver a memória dos agentes");
             System.out.println("3.Deseja ver o campo de visão do agentes");
@@ -166,14 +161,12 @@ public class Simulador {
         System.out.println("Deseja ver a memória de que agente? (0 para sair)");
         a.print_agents();
         option1 = sc.nextInt();
-      
         if(option1 != 0){
             if(a.get_entity_by_id(option1) instanceof Agente){
                 ((Agente)a.get_entity_by_id(option1)).getMemory().imprimeMemoria();
             }
             else{
-                System.out.println("Esse robot não existe por favor introduza uma opcao valida;");
-                
+                System.out.println("Esse robot não existe");
             }
         }
     }
