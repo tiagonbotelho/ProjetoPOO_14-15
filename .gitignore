@@ -1,0 +1,12 @@
+*.vpp~1
+*.iml
+*.vpp
+.idea/workspace.xml
+*.pdf
+exec
+.DS_Store
+.#*
+.idea/
+*.iml
+*.iws
+/src/Robierto/nbproject/private/
