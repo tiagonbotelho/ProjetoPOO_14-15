@@ -1,5 +1,6 @@
 
 import java.util.*;
+import java.math.*;
 
 public abstract class Agente extends Entidade{
     protected Percepcao perception;
@@ -16,6 +17,22 @@ public abstract class Agente extends Entidade{
 
     public void move(Ambiente a) {
 
+    }
+    
+    public int calcDistance(Agente a) {
+    	int acc=0;
+    	double aux;
+    	ArrayList <Coord> walk = a.getMemory().getWalk();
+    	double x;
+    	double y;
+    	for(Coord e: walk) {
+    		x=(double)e.getX();
+    		y=(double)e.getY();
+    		aux=Math.pow(x, 2.0)+Math.pow(y, 2.0);
+    		aux=Math.sqrt(aux);
+    		acc+=(int)aux;
+    	}
+    	return acc;
     }
 
     public void vision_camp(Ambiente a) { //Atualiza a perception do agente
