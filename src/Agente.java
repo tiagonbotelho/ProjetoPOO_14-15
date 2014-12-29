@@ -19,10 +19,10 @@ public abstract class Agente extends Entidade{
 
     }
     
-    public int calcDistance(Agente a) {
+    public int calcDistance() {
     	int acc=0;
     	double aux;
-    	ArrayList <Coord> walk = a.getMemory().getWalk();
+    	ArrayList <Coord> walk = this.getMemory().getWalk();
     	double x;
     	double y;
     	for(Coord e: walk) {

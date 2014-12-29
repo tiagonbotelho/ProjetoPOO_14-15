@@ -150,16 +150,7 @@ public class Simulador {
                     a = newAmbient();
                     break;
                 case 10:
-                	a.print_agents();
-                    System.out.println("Qual o id do robot do qual deseja observar a distância percorrida?");
-                    option2 = sc.nextInt();
-                    if(a.get_entity_by_id(option2) instanceof Agente){
-                    	
-                        System.out.println();
-                    }
-                    else{
-                        System.out.println("Esse id não é de um agente.");
-                    }
+                	distanceMenu(a);
                     break;
                 case 11:
                 	break loop;
@@ -168,6 +159,21 @@ public class Simulador {
                     break;
             }
 
+        }
+    }
+    
+    private static void distanceMenu(Ambiente a) {
+    	int option2;
+    	int dist;
+    	Scanner sc = new Scanner(System.in);
+    	a.print_agents();
+        System.out.println("Qual o id do robot do qual deseja observar a distância percorrida?");
+        option2 = sc.nextInt();
+        if(a.get_entity_by_id(option2) instanceof Agente){
+            dist=((Agente)a.get_entity_by_id(option2)).calcDistance();
+        }
+        else{
+            System.out.println("Esse id não é de um agente.");
         }
     }
     
