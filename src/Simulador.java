@@ -31,9 +31,9 @@ public class Simulador {
         System.out.print("Introduza a sua opcao: ");
         option1=s.nextInt();
         System.out.print("Introduza uma forma: ");
-        forma=s.next();
+        forma=s.nextLine();
         System.out.print("Introduza uma cor: ");
-        cor=s.next();
+        cor=s.nextLine();
         System.out.print("Introduza uma coordenada x: ");
         x=s.nextInt();
         System.out.print("introduza uma coordenada y: ");
@@ -88,25 +88,25 @@ public class Simulador {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduza o tamanho do novo ambiente.");
         System.out.print("Altura: ");
-        height = sc.next();
+        height = sc.nextLine();
         while(!protectChar(height)) {
         	System.out.print("Altura invalida por favor introduza um valor válido: ");
-        	height=sc.next();
+        	height=sc.nextLine();
         }
         System.out.print("Largura: ");
-        width = sc.next();
+        width = sc.nextLine();
         while(!protectChar(width)) {
         	System.out.print("Largura invalida por favor introduza um valor válido: ");
-        	width=sc.next();
+        	width=sc.nextLine();
         }
         System.out.print("Qual o tempo de vida dos robots que pretende?");
-		lifeSpan = sc.next();
+		lifeSpan = sc.nextLine();
         while(!protectChar(lifeSpan)) {
         	System.out.print("Input invalido por favor introduza um valor correto: ");
-        	lifeSpan=sc.next();
+        	lifeSpan=sc.nextLine();
         }
         System.out.print("Qual o tamanho do campo de visão dos robots que pretende?");
-        campoVisao = sc.next();
+        campoVisao = sc.nextLine();
         while(!protectChar(campoVisao)) {
         	System.out.print("Valor invalido por favor introduza um valor correto: ");
         }

@@ -30,8 +30,8 @@ public abstract class Agente extends Entidade{
     	while(i<size-1) {
     		comp1=walk.get(i);
     		comp2=walk.get(i+1);
-    		x=(double)comp1.getX() + (double)comp2.getX();
-    		y=(double)comp1.getY() + (double)comp2.getY();
+    		x=(double)comp2.getX() - (double)comp1.getX();
+    		y=(double)comp2.getY() - (double)comp1.getY();
     		x=Math.pow(x, 2.0);
     		y=Math.pow(y, 2.0);
     		aux=Math.sqrt(x+y);
