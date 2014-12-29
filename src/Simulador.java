@@ -5,9 +5,10 @@ public class Simulador {
     public static Ambiente a;
     
     private static boolean protectChar(String input) {
+    	String simbols="?!.,;:-_`´^/()%&$#[]{}=+*|\"";
     	char [] items = input.toCharArray();
     	for(char c: items) {
-    		if(Character.isLetter(c)) {
+    		if(Character.isLetter(c) || simbols.indexOf(c)!=-1) {
                     return false;
     		
     		}
