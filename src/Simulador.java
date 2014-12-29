@@ -1,6 +1,4 @@
-
 import java.util.*;
-import java.lang.*;
 
 public class Simulador {
     
@@ -31,13 +29,13 @@ public class Simulador {
         System.out.println(" 2.HammingJumper\n");
         System.out.println(" 3.DistanceJumper\n");
         option1=s.nextInt();
-        System.out.println("Introduza uma forma: ");
+        System.out.print("Introduza uma forma: ");
         forma=s.next();
-        System.out.println("Introduza uma cor: ");
+        System.out.print("Introduza uma cor: ");
         cor=s.next();
-        System.out.println("Introduza uma coordenada x: ");
+        System.out.print("Introduza uma coordenada x: ");
         x=s.nextInt();
-        System.out.println("introduza uma coordenada y: ");
+        System.out.print("introduza uma coordenada y: ");
         y=s.nextInt();
         coorden=new Coord(x,y);
         switch(option1){
@@ -61,25 +59,25 @@ public class Simulador {
         Ambiente novo;
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduza o tamanho do novo ambiente.");
-        System.out.println("Altura: ");
+        System.out.print("Altura: ");
         height = sc.next();
         while(!protectChar(height)) {
         	System.out.print("Altura invalida por favor introduza um valor válido: ");
         	height=sc.next();
         }
-        System.out.println("Largura: ");
+        System.out.print("Largura: ");
         width = sc.next();
         while(!protectChar(width)) {
         	System.out.print("Largura invalida por favor introduza um valor válido: ");
         	width=sc.next();
         }
-        System.out.println("Qual o tempo de vida dos robots que pretende?");
+        System.out.print("Qual o tempo de vida dos robots que pretende?");
 		lifeSpan = sc.next();
         while(!protectChar(lifeSpan)) {
         	System.out.print("Input invalido por favor introduza um valor correto: ");
         	lifeSpan=sc.next();
         }
-        System.out.println("Qual o tamanho do campo de visão dos robots que pretende?");
+        System.out.print("Qual o tamanho do campo de visão dos robots que pretende?");
         campoVisao = sc.next();
         while(!protectChar(campoVisao)) {
         	System.out.print("Valor invalido por favor introduza um valor correto: ");
@@ -89,7 +87,6 @@ public class Simulador {
     }
 
     public static void main(String[] args) {
-    	Agente aux;
         int option1,option2;
         Scanner sc = new Scanner(System.in);
         System.out.println("Hello! Welcome to Robierto Simulator!");
@@ -171,6 +168,7 @@ public class Simulador {
         option2 = sc.nextInt();
         if(a.get_entity_by_id(option2) instanceof Agente){
             dist=((Agente)a.get_entity_by_id(option2)).calcDistance();
+            System.out.println(dist);
         }
         else{
             System.out.println("Esse id não é de um agente.");

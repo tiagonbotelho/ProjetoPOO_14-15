@@ -58,7 +58,7 @@ public class Memoria {
     }
 
     public void imprimeObjetos() {
-        ArrayList <Objeto> aux = new ArrayList();
+        ArrayList <Objeto> aux = new ArrayList<Objeto>();
         System.out.println("-------OBJETOS----------");
         for (Objeto m : objetos) {
             if(!aux.contains(m)){
