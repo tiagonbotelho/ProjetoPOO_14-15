@@ -70,8 +70,9 @@ public class Ambiente {
         else{
             return false;
         }
-            
     }
+    
+    
     
     public void deleteEntity(int id){
         Iterator<Entidade> iterador = entidades.iterator();

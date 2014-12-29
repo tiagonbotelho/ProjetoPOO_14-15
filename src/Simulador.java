@@ -4,11 +4,11 @@ public class Simulador {
     
     public static Ambiente a;
     
-    public static boolean protectChar(String input) {
+    private static boolean protectChar(String input) {
     	char [] items = input.toCharArray();
     	for(char c: items) {
     		if(Character.isLetter(c)) {
-    			return false;
+                    return false;
     		
     		}
     	}
@@ -51,6 +51,32 @@ public class Simulador {
         robot.visionCamp(a);
         a.addEntidade(robot);
         return robot;
+    }
+    
+    public static void criaObjeto(){
+        Scanner sc = new Scanner(System.in);
+        String forma,cor,type;
+        int x,y;
+        Coord pos;
+        Objeto novo;
+        System.out.println("Qual a forma do objeto que deseja criar?");
+        forma = sc.nextLine();
+        System.out.println("Qual a cor do objeto que deseja criar?");
+        cor = sc.nextLine();
+        System.out.println("Introduza o tipo de objeto");
+        type = sc.nextLine();
+        while(true){
+            System.out.println("Introduza uma coordenada x: ");
+            x = sc.nextInt();
+            System.out.println("Introduza uma coordenada y: ");
+            y = sc.nextInt();
+            pos = new Coord(x,y);
+            novo = new Objeto(forma,cor,pos,type);
+            if(!a.addEntidade(novo)){
+                System.out.println("Essa posição já se encontra ocupada");
+            }
+            break;
+        }
     }
 
     public static Ambiente newAmbient() {
@@ -101,7 +127,7 @@ public class Simulador {
             System.out.println("4.Deseja ver a lista de objetos apreendidos pelos agentes;");
             System.out.println("5.Deseja ver todas as entidades no ambiente;");
             System.out.println("6.Deseja ver todas as posições pelo qual os robots passaram;");
-            System.out.println("7.Adicionar novo Robot;");
+            System.out.println("7.Adicionar nova Entidade;");
             System.out.println("8.Eliminar um Robot(0 para sair);");
             System.out.println("9.Deseja fazer um ambiente novo;");
             System.out.println("10.Deseja observar a distancia percorrida pelo Agente;");
@@ -114,19 +140,19 @@ public class Simulador {
             }
             switch(option1) {
                 case 1:
-                    moveMenu(a); break;
+                    moveMenu(); break;
                 case 2:
-                    memoriaMenu(a); break;
+                    memoriaMenu(); break;
                 case 3:
-                    visionMenu(a); break;
+                    visionMenu(); break;
                 case 4:
-                    objetosMenu(a); break;
+                    objetosMenu(); break;
                 case 5:
                     a.imprimeLista(); break;
                 case 6:
-                    walkMenu(a); break;
+                    walkMenu(); break;
                 case 7:
-                    criaAgente(a.getLifeSpan()); break;
+                    createMenu(); break;
                 case 8:
                     a.printAgents();
                     System.out.println("Qual o id do robot que deseja eliminar?");
@@ -141,7 +167,7 @@ public class Simulador {
                 case 9:
                     a = newAmbient(); break;
                 case 10:
-                	distanceMenu(a); break;
+                	distanceMenu(); break;
                 case 11:
                 	break loop;
                 default:
@@ -150,7 +176,7 @@ public class Simulador {
         }
     }
     
-    private static void distanceMenu(Ambiente a) {
+    private static void distanceMenu() {
     	int option2;
     	int dist;
     	Scanner sc = new Scanner(System.in);
@@ -166,7 +192,7 @@ public class Simulador {
         }     
     }
     
-    private static void moveMenu(Ambiente a) {
+    private static void moveMenu() {
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Que robot deseja mover? (0 se todos)\n");
@@ -185,7 +211,7 @@ public class Simulador {
         }
     }
     
-    private static void visionMenu(Ambiente a) {
+    private static void visionMenu() {
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver o campo de visão de que agente? (0 para sair)");
@@ -201,7 +227,7 @@ public class Simulador {
         }
     }
     
-    private static void memoriaMenu(Ambiente a) {
+    private static void memoriaMenu() {
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver a memória de que agente? (0 para sair)");
@@ -217,7 +243,7 @@ public class Simulador {
         }
     }
     
-    private static void objetosMenu(Ambiente a) {
+    private static void objetosMenu() {
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver os objetos de que agente? (0 para sair)");
@@ -233,7 +259,7 @@ public class Simulador {
         }
     }
     
-    private static void walkMenu(Ambiente a) {
+    private static void walkMenu() {
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver os passos de que agente? (0 para sair)");
@@ -248,4 +274,24 @@ public class Simulador {
             }
         }
     }
+    
+    private static void createMenu(){
+        int option1;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Deseja criar que entidade?");
+        System.out.println("1. Agente\t2.Objeto");
+        option1 = sc.nextInt();
+        switch(option1){
+            case 1:
+                criaAgente(a.getLifeSpan());
+                break;
+            case 2:
+                criaObjeto();
+                break;
+            case 3:
+                System.out.println("Escolha inválida");
+                break;
+        }
+    }
+            
 }
