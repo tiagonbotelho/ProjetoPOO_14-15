@@ -32,8 +32,8 @@ public class Aleatorio extends Agente{
                 pos.setX(random.getPos().getX());
                 pos.setY(random.getPos().getY());
             }
-            this.vision_camp(a);
-            memory.add_to_walk(pos);
+            this.visionCamp(a);
+            memory.addToWalk(pos);
         }      
     }
 }

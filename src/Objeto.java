@@ -1,7 +1,5 @@
 import java.util.*;
-/**
- * Created by tiagobotelho on 14/12/14.
- */
+
 public class Objeto extends Entidade{
     private String tipo;
     private static final String tipos[] = {"Mesa","Cadeira","Lâmpada","Pessoa","Porta","Caixa"};

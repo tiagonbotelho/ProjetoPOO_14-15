@@ -1,7 +1,3 @@
-
-/**
- * Created by tiagobotelho on 14/12/14.
- */
 public abstract class Entidade {
     protected int id;
     protected String forma;
@@ -24,7 +20,7 @@ public abstract class Entidade {
         return "ID: "+id+" Forma: "+forma+" Cor: "+cor+ " Coordinates: "+ pos.toString();
     }
 
-    public int add_ID(Ambiente a){ 
+    public int addID(Ambiente a){ 
         int new_id = 1;
         for(Entidade e:a.getEntidades()){  //Percorre toda lista até encontrar um id nao utilizado
             if(e.getId()==new_id){

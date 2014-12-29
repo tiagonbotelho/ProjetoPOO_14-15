@@ -1,5 +1,3 @@
-
-
 import java.util.Random;
 
 public class Distance extends Agente{
@@ -34,8 +32,8 @@ public class Distance extends Agente{
                 pos.setX(prox.getPos().getX());
                 pos.setY(prox.getPos().getY());
             }
-            this.vision_camp(a);
-            memory.add_to_walk(pos);
+            this.visionCamp(a);
+            memory.addToWalk(pos);
         }
     }
 }

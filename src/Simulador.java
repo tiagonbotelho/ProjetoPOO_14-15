@@ -46,9 +46,9 @@ public class Simulador {
                 default:
                     robot = new Distance(forma,cor,coorden,lifespan);break; 
         }
-        robot.getMemory().add_to_walk(coorden);
-        robot.vision_camp(a);
-        a.add_entidade(robot);
+        robot.getMemory().addToWalk(coorden);
+        robot.visionCamp(a);
+        a.addEntidade(robot);
         return robot;
     }
 
@@ -91,7 +91,7 @@ public class Simulador {
         Scanner sc = new Scanner(System.in);
         System.out.println("Hello! Welcome to Robierto Simulator!");
         a=newAmbient();
-        a.preenche_ambiente();
+        a.preencheAmbiente();
         loop : while(true){
             System.out.println("1.Deseja mover um Agente;");
             System.out.println("2.Deseja ver a memória dos agentes;");
@@ -124,7 +124,7 @@ public class Simulador {
                     objetosMenu(a);
                     break;
                 case 5:
-                    a.ImprimeLista();
+                    a.imprimeLista();
                     break;
                 case 6:
                     walkMenu(a);
@@ -133,11 +133,11 @@ public class Simulador {
                     criaAgente(a.getLifeSpan());
                     break;
                 case 8:
-                    a.print_agents();
+                    a.printAgents();
                     System.out.println("Qual o id do robot que deseja eliminar?");
                     option2 = sc.nextInt();
-                    if(a.get_entity_by_id(option2) instanceof Agente){
-                        a.delete_entity(option2);
+                    if(a.getEntityByID(option2) instanceof Agente){
+                        a.deleteEntity(option2);
                     }
                     else{
                         System.out.println("Esse id não é de um agente.");
@@ -163,30 +163,31 @@ public class Simulador {
     	int option2;
     	int dist;
     	Scanner sc = new Scanner(System.in);
-    	a.print_agents();
-        System.out.println("Qual o id do robot do qual deseja observar a distância percorrida?");
+    	a.printAgents();
+        System.out.print("\nQual o id do robot do qual deseja observar a distância percorrida: ");
         option2 = sc.nextInt();
-        if(a.get_entity_by_id(option2) instanceof Agente){
-            dist=((Agente)a.get_entity_by_id(option2)).calcDistance();
+        if(a.getEntityByID(option2) instanceof Agente){
+            dist=((Agente)a.getEntityByID(option2)).calcDistance();
             System.out.println(dist);
         }
         else{
             System.out.println("Esse id não é de um agente.");
         }
+        
     }
     
     private static void moveMenu(Ambiente a){
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Que robot deseja mover? (0 se todos)\n");
-        a.print_agents();
+        a.printAgents();
         option1 = sc.nextInt();
         if(option1 == 0){
-            a.move_agents();
+            a.moveAgents();
         }
         else{
-            if(a.get_entity_by_id(option1) instanceof Agente){
-                ((Agente)a.get_entity_by_id(option1)).move(a);
+            if(a.getEntityByID(option1) instanceof Agente){
+                ((Agente)a.getEntityByID(option1)).move(a);
             }
             else{
                 System.out.println("Esse robot não existe");
@@ -198,11 +199,11 @@ public class Simulador {
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver o campo de visão de que agente? (0 para sair)");
-        a.print_agents();
+        a.printAgents();
         option1 = sc.nextInt();
         if(option1 != 0){
-            if(a.get_entity_by_id(option1) instanceof Agente){
-                ((Agente)a.get_entity_by_id(option1)).getPerception().imprime_Visao();
+            if(a.getEntityByID(option1) instanceof Agente){
+                ((Agente)a.getEntityByID(option1)).getPerception().imprimeVisao();
             }
             else{
                 System.out.println("Esse robot não existe");
@@ -214,11 +215,11 @@ public class Simulador {
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver a memória de que agente? (0 para sair)");
-        a.print_agents();
+        a.printAgents();
         option1 = sc.nextInt();
         if(option1 != 0){
-            if(a.get_entity_by_id(option1) instanceof Agente){
-                ((Agente)a.get_entity_by_id(option1)).getMemory().imprimeMemoria();
+            if(a.getEntityByID(option1) instanceof Agente){
+                ((Agente)a.getEntityByID(option1)).getMemory().imprimeMemoria();
             }
             else{
                 System.out.println("Esse robot não existe");
@@ -230,11 +231,11 @@ public class Simulador {
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver os objetos de que agente? (0 para sair)");
-        a.print_agents();
+        a.printAgents();
         option1 = sc.nextInt();
         if(option1 != 0){
-            if(a.get_entity_by_id(option1) instanceof Agente){
-                ((Agente)a.get_entity_by_id(option1)).getMemory().imprimeObjetos();
+            if(a.getEntityByID(option1) instanceof Agente){
+                ((Agente)a.getEntityByID(option1)).getMemory().imprimeObjetos();
             }
             else{
                 System.out.println("Esse robot não existe");
@@ -246,11 +247,11 @@ public class Simulador {
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver os passos de que agente? (0 para sair)");
-        a.print_agents();
+        a.printAgents();
         option1 = sc.nextInt();
         if(option1 != 0){
-            if(a.get_entity_by_id(option1) instanceof Agente){
-                ((Agente)a.get_entity_by_id(option1)).getMemory().print_walk();
+            if(a.getEntityByID(option1) instanceof Agente){
+                ((Agente)a.getEntityByID(option1)).getMemory().printWalk();
             }
             else{
                 System.out.println("Esse robot não existe");

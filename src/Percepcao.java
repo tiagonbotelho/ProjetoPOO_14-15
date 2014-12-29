@@ -1,10 +1,5 @@
-
-
 import java.util.ArrayList;
 
-/**
- * Created by tiagobotelho on 14/12/14.
- */
 public class Percepcao {
 
     private ArrayList <Objeto> visao;
@@ -20,7 +15,7 @@ public class Percepcao {
         Objeto novo = obj;
         visao.add(novo);
     }
-    public void imprime_Visao() {
+    public void imprimeVisao() {
         if(visao.isEmpty()==false){
             System.out.println("Percepção: ");
         }

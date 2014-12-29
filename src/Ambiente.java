@@ -2,9 +2,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/**
- * Created by tiagobotelho on 14/12/14.
- */
+
 public class Ambiente {
     private int campoVisao;
     private int width;
@@ -25,12 +23,12 @@ public class Ambiente {
         this.campoVisao = campoVisao;
     }
     
-    public void preenche_ambiente(){ //Preenche 1/5 do ambiente com objetos random
+    public void preencheAmbiente(){ //Preenche 1/5 do ambiente com objetos random
         Objeto aux;
         for(int i = 0;i<tamanho/5;i++){
             aux = new Objeto();
             aux.ObjetoRandom(width, height);
-            if(this.add_entidade(aux)==false){
+            if(this.addEntidade(aux)==false){
               i--;  
             }
         }
@@ -56,10 +54,10 @@ public class Ambiente {
         return i;
     }
     
-    public boolean add_entidade(Entidade entidade){
+    public boolean addEntidade(Entidade entidade){
         if(entidade instanceof Agente || this.checkCoord(entidade.getPos()) == false){ //se for agente não precisa de verificar a posição
             int posicao = entidades.size(); //assume que a posição em que a entidade vai ser inserida seja a ultima
-            entidade.setId(entidade.add_ID(this)); //calcula o id
+            entidade.setId(entidade.addID(this)); //calcula o id
             for(Entidade e:entidades){
                 if(e.getId()>entidade.getId()){  //quando encontrar id superior ao seu insere nessa posição.
                     posicao = entidades.indexOf(e);
@@ -75,7 +73,7 @@ public class Ambiente {
             
     }
     
-    public void delete_entity(int id){
+    public void deleteEntity(int id){
         Iterator<Entidade> iterador = entidades.iterator();
         while(iterador.hasNext()){
             Entidade aux = iterador.next();
@@ -85,7 +83,7 @@ public class Ambiente {
         }
     }
     
-    public void move_agents(){ //Move todos os agentes
+    public void moveAgents(){ //Move todos os agentes
         Iterator <Entidade> iterador = entidades.iterator();
         while(iterador.hasNext()){
             Entidade aux = iterador.next();
@@ -95,7 +93,7 @@ public class Ambiente {
         }
     }
 
-    public Entidade get_entity_by_id(int id){ //Devolve entidade que tenha o id passado como argumento, caso nao exista devolve null
+    public Entidade getEntityByID(int id){ //Devolve entidade que tenha o id passado como argumento, caso nao exista devolve null
         for(Entidade e:entidades){
             if(e.getId() == id){
                 return e;
@@ -104,7 +102,7 @@ public class Ambiente {
         return null;
     }
     
-    void print_agents(){
+    void printAgents(){
         for(Entidade entity : entidades){
             if(entity instanceof Agente){
                 System.out.println(entity);
@@ -152,7 +150,7 @@ public class Ambiente {
         entidades=n;
     }
 
-    public void ImprimeLista() {
+    public void imprimeLista() {
         for(Entidade e : entidades) {
             System.out.println(e.toString());
         }

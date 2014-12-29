@@ -1,10 +1,6 @@
 
 import java.util.Random;
 
-/**
- * Created by tiagobotelho on 14/12/14.
- */
-
 public class Hamming extends Agente{
 
     public Hamming(String forma,String cor,Coord pos,int lifespan) {
@@ -54,8 +50,8 @@ public class Hamming extends Agente{
                 pos.setX(hamm.pos.getX()); //adiciona na memoria e salta para o objeto correspondente (hamm)
                 pos.setY(hamm.pos.getY());
             }
-            this.vision_camp(a);
-            memory.add_to_walk(pos);
+            this.visionCamp(a);
+            memory.addToWalk(pos);
     	}
     }
 }

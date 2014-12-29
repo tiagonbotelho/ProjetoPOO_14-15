@@ -1,9 +1,6 @@
 
 import java.util.ArrayList;
 
-/**
- * Created by tiagobotelho on 14/12/14.
- */
 public class Memoria {
     private ArrayList <Percepcao> memoria;
     private ArrayList <Objeto> objetos;  /*TODO Adicionar contador dos objetos passados*/ 
@@ -31,13 +28,13 @@ public class Memoria {
         System.out.println("----------------------MEMORY\n");
         for (Percepcao p : memoria) {
             System.out.println("--------////------------");
-            p.imprime_Visao();
+            p.imprimeVisao();
             System.out.println("-------------------//--------------");
         }
         System.out.println("------END MEMORY-----------");
     }
     
-    public int number_ocurrences(Objeto objeto){
+    public int numberOcurrences(Objeto objeto){
         int counter = 0;
         for(Objeto obj:objetos){
             if(obj == objeto){
@@ -52,7 +49,7 @@ public class Memoria {
         objetos.add(novo);
     }
     
-    public void add_to_walk(Coord pos){
+    public void addToWalk(Coord pos){
         Coord novo = pos;
         walk.add(novo);
     }
@@ -63,14 +60,14 @@ public class Memoria {
         for (Objeto m : objetos) {
             if(!aux.contains(m)){
                 System.out.println(m.toString());
-                System.out.println("Número de vezes: " + number_ocurrences(m));
+                System.out.println("Número de vezes: " + numberOcurrences(m));
                 aux.add(m);
             }
         }
         System.out.println("---------END OBJETOS-----------");
     }
     
-    public void print_walk(){
+    public void printWalk(){
         for(Coord i: walk){
             System.out.println(i);
         }
