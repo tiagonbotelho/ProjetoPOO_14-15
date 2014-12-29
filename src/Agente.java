@@ -19,16 +19,24 @@ public abstract class Agente extends Entidade{
     
     public int calcDistance() {
     	int acc=0;
+    	int i=0;
     	double aux;
+    	Coord comp1;
+    	Coord comp2;
     	ArrayList <Coord> walk = this.getMemory().getWalk();
+    	int size = walk.size();
     	double x;
     	double y;
-    	for(Coord e: walk) {
-    		x=(double)e.getX();
-    		y=(double)e.getY();
-    		aux=Math.pow(x, 2.0)+Math.pow(y, 2.0);
-    		aux=Math.sqrt(aux);
+    	while(i<size-1) {
+    		comp1=walk.get(i);
+    		comp2=walk.get(i+1);
+    		x=(double)comp1.getX() + (double)comp2.getX();
+    		y=(double)comp1.getY() + (double)comp2.getY();
+    		x=Math.pow(x, 2.0);
+    		y=Math.pow(y, 2.0);
+    		aux=Math.sqrt(x+y);
     		acc+=(int)aux;
+    		i++;
     	}
     	return acc;
     }
