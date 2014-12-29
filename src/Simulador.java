@@ -8,13 +8,13 @@ public class Simulador {
     
     public static boolean protectChar(String input) {
     	char [] items = input.toCharArray();
-    	boolean condition=false;
     	for(char c: items) {
-    		if(!Character.isLetter(c)) {
-    			condition=true;
+    		if(Character.isLetter(c)) {
+    			return false;
+    		
     		}
     	}
-    	return condition;
+    	return true;
     }
 
     public static Agente criaAgente(int lifespan) {
@@ -55,7 +55,6 @@ public class Simulador {
     }
 
     public static Ambiente newAmbient() {
-    	boolean tryout=false;
         String height,width;
         String lifeSpan;
         String campoVisao;
@@ -90,6 +89,7 @@ public class Simulador {
     }
 
     public static void main(String[] args) {
+    	Agente aux;
         int option1,option2;
         Scanner sc = new Scanner(System.in);
         System.out.println("Hello! Welcome to Robierto Simulator!");
@@ -115,22 +115,22 @@ public class Simulador {
             }
             switch(option1){
                 case 1:
-                    move_menu(a);
+                    moveMenu(a);
                     break;
                 case 2:
-                    memoria_menu(a);
+                    memoriaMenu(a);
                     break;
                 case 3:
-                    vision_menu(a);
+                    visionMenu(a);
                     break;
                 case 4:
-                    objetos_menu(a);
+                    objetosMenu(a);
                     break;
                 case 5:
                     a.ImprimeLista();
                     break;
                 case 6:
-                    walk_menu(a);
+                    walkMenu(a);
                     break;
                 case 7:
                     criaAgente(a.getLifeSpan());
@@ -150,7 +150,19 @@ public class Simulador {
                     a = newAmbient();
                     break;
                 case 10:
-                    break loop;
+                	a.print_agents();
+                    System.out.println("Qual o id do robot do qual deseja observar a distância percorrida?");
+                    option2 = sc.nextInt();
+                    if(a.get_entity_by_id(option2) instanceof Agente){
+                    	
+                        System.out.println();
+                    }
+                    else{
+                        System.out.println("Esse id não é de um agente.");
+                    }
+                    break;
+                case 11:
+                	break loop;
                 default:
                     System.out.println("Inválido");
                     break;
@@ -159,7 +171,7 @@ public class Simulador {
         }
     }
     
-    private static void move_menu(Ambiente a){
+    private static void moveMenu(Ambiente a){
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Que robot deseja mover? (0 se todos)\n");
@@ -178,7 +190,7 @@ public class Simulador {
         }
     }
     
-    private static void vision_menu(Ambiente a){
+    private static void visionMenu(Ambiente a){
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver o campo de visão de que agente? (0 para sair)");
@@ -194,7 +206,7 @@ public class Simulador {
         }
     }
     
-    private static void memoria_menu(Ambiente a){
+    private static void memoriaMenu(Ambiente a){
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver a memória de que agente? (0 para sair)");
@@ -210,7 +222,7 @@ public class Simulador {
         }
     }
     
-    private static void objetos_menu(Ambiente a){
+    private static void objetosMenu(Ambiente a){
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver os objetos de que agente? (0 para sair)");
@@ -226,7 +238,7 @@ public class Simulador {
         }
     }
     
-    private static void walk_menu(Ambiente a){
+    private static void walkMenu(Ambiente a){
         int option1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Deseja ver os passos de que agente? (0 para sair)");
