@@ -30,6 +30,7 @@ public class Simulador {
         System.out.println(" 3.DistanceJumper\n\n");
         System.out.print("Introduza a sua opcao: ");
         option1=s.nextInt();
+        s.nextLine();
         System.out.print("Introduza uma forma: ");
         forma=s.nextLine();
         System.out.print("Introduza uma cor: ");
