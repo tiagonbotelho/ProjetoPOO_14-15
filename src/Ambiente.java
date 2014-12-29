@@ -57,7 +57,7 @@ public class Ambiente {
     }
     
     public boolean add_entidade(Entidade entidade){
-        if(this.checkCoord(entidade.getPos()) == false){
+        if(entidade instanceof Agente || this.checkCoord(entidade.getPos()) == false){ //se for agente não precisa de verificar a posição
             int posicao = entidades.size(); //assume que a posição em que a entidade vai ser inserida seja a ultima
             entidade.setId(entidade.add_ID(this)); //calcula o id
             for(Entidade e:entidades){

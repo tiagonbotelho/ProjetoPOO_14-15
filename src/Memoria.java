@@ -36,6 +36,16 @@ public class Memoria {
         }
         System.out.println("------END MEMORY-----------");
     }
+    
+    public int number_ocurrences(Objeto objeto){
+        int counter = 0;
+        for(Objeto obj:objetos){
+            if(obj == objeto){
+                counter++;
+            }
+        }
+        return counter;
+    }
 
     public void addtoObjetos(Objeto obj) {
         Objeto novo = obj;
@@ -48,9 +58,14 @@ public class Memoria {
     }
 
     public void imprimeObjetos() {
+        ArrayList <Objeto> aux = new ArrayList();
         System.out.println("-------OBJETOS----------");
         for (Objeto m : objetos) {
-            System.out.println(m.toString());
+            if(!aux.contains(m)){
+                System.out.println(m.toString());
+                System.out.println("Número de vezes: " + number_ocurrences(m));
+                aux.add(m);
+            }
         }
         System.out.println("---------END OBJETOS-----------");
     }
