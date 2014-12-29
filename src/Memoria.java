@@ -50,7 +50,7 @@ public class Memoria {
     }
     
     public void addToWalk(Coord pos){
-        Coord novo = pos;
+        Coord novo = new Coord(pos.getX(),pos.getY());
         walk.add(novo);
     }
 
