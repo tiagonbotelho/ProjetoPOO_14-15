@@ -14,7 +14,6 @@ public abstract class Agente extends Entidade{
 
 
     public void move(Ambiente a) {
-        /*FIXME change they it moves when there is no object*/
     }
     
     public int calcDistance() {

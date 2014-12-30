@@ -72,6 +72,13 @@ public class Ambiente {
         }
     }
     
+    public void updateAllPerceptions(){
+        for(Entidade e:entidades){
+            if(e instanceof Agente){
+                ((Agente)e).visionCamp(this);
+            }
+        }
+    }
     
     
     public void deleteEntity(int id){

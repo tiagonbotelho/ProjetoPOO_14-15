@@ -16,8 +16,9 @@ public class Distance extends Agente{
             lifespan--;
             memory.inserePercepcaoM(perception);
             if(perception.getVisao().isEmpty()){
-                pos.setX(rd.nextInt(a.getWidth())+1);
-                pos.setY(rd.nextInt(a.getHeight())+1);
+                Coord novaPos = this.pos.noObjectCoord(a.getCampoVisao(), a);
+                pos.setX(novaPos.getX());
+                pos.setY(novaPos.getY());
             }
             else{
                 Objeto prox = perception.getVisao().get(0);
@@ -32,7 +33,6 @@ public class Distance extends Agente{
                 pos.setX(prox.getPos().getX());
                 pos.setY(prox.getPos().getY());
             }
-            this.visionCamp(a);
             memory.addToWalk(pos);
         }
     }

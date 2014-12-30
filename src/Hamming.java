@@ -23,9 +23,9 @@ public class Hamming extends Agente{
             memory.inserePercepcaoM(perception);
             //se o campo de visão estiver vazio salta para uma posicao random
             if(perception.getVisao().isEmpty()) { 
-                    System.out.println("Saltei random");
-                    pos.setX(rd.nextInt(a.getWidth())+1);
-                    pos.setY(rd.nextInt(a.getHeight())+1);
+                Coord novaPos = this.pos.noObjectCoord(a.getCampoVisao(), a);
+                pos.setX(novaPos.getX());
+                pos.setY(novaPos.getY());
             }
             else {
                 //se o agente não tiver objetos captados move-se para um objeto random
@@ -50,7 +50,6 @@ public class Hamming extends Agente{
                 pos.setX(hamm.pos.getX()); //adiciona na memoria e salta para o objeto correspondente (hamm)
                 pos.setY(hamm.pos.getY());
             }
-            this.visionCamp(a);
             memory.addToWalk(pos);
     	}
     }

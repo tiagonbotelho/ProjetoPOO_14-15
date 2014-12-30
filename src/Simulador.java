@@ -62,7 +62,7 @@ public class Simulador {
         Coord pos;
         Objeto novo;
         System.out.println("Qual a forma do objeto que deseja criar?");
-        forma = sc.nextLine();
+        forma = sc.nextLine();              /*TODO so aceitar cores e formas da lista*/
         System.out.println("Qual a cor do objeto que deseja criar?");
         cor = sc.nextLine();
         System.out.println("Introduza o tipo de objeto");
@@ -123,6 +123,7 @@ public class Simulador {
         a=newAmbient();
         a.preencheAmbiente();
         loop : while(true) {
+            a.updateAllPerceptions();
             System.out.println("1.Deseja mover um Agente;");
             System.out.println("2.Deseja ver a memória dos agentes;");
             System.out.println("3.Deseja ver o campo de visão do agentes;");
@@ -140,7 +141,7 @@ public class Simulador {
             	System.out.println("Opcao invalida por favor introduza uma opcao valida...");
             	option1=sc.nextInt();
             }
-            switch(option1) {
+            switch(option1) { /*FIXME*/
                 case 1:
                     moveMenu(); break;
                 case 2:
@@ -169,9 +170,9 @@ public class Simulador {
                 case 9:
                     a = newAmbient(); break;
                 case 10:
-                	distanceMenu(); break;
+                    distanceMenu(); break;
                 case 11:
-                	break loop;
+                    break loop;
                 default:
                     System.out.println("Inválido"); break;
             }

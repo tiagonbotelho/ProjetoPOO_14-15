@@ -22,9 +22,10 @@ public class Aleatorio extends Agente{
         if(lifespan>=1){
             lifespan--;
             memory.inserePercepcaoM(perception); //insere percepção na memoria
-            if(perception.getVisao().isEmpty()){  
-                pos.setX(rd.nextInt(a.getWidth())+1);
-                pos.setY(rd.nextInt(a.getHeight())+1);
+            if(perception.getVisao().isEmpty()){
+                Coord novaPos = this.pos.noObjectCoord(a.getCampoVisao(), a);
+                pos.setX(novaPos.getX());
+                pos.setY(novaPos.getY());
             }
             else{
                 random = perception.getVisao().get(rd.nextInt(perception.getVisao().size()));
@@ -32,7 +33,6 @@ public class Aleatorio extends Agente{
                 pos.setX(random.getPos().getX());
                 pos.setY(random.getPos().getY());
             }
-            this.visionCamp(a);
             memory.addToWalk(pos);
         }      
     }
