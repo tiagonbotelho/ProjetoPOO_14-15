@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class Simulador {
@@ -119,8 +124,19 @@ public class Simulador {
     public static void main(String[] args) {
         int option1,option2;
         Scanner sc = new Scanner(System.in);
+        try{
+            if(!init()){
+            System.out.println("Erro na busca");
+            return;
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("O ficheiro config.txt não existe.");
+            return;
+        }catch(IOException e){
+            System.out.println(e);
+            return;
+        }
         System.out.println("Hello! Welcome to Robierto Simulator!");
-        a=newAmbient();
         a.preencheAmbiente();
         loop : while(true) {
             a.updateAllPerceptions();
@@ -297,4 +313,45 @@ public class Simulador {
         }
     }
             
+    public static boolean init() throws FileNotFoundException, IOException{
+        FicheirodeTexto config = new FicheirodeTexto();
+        int width,height,lifespan,campovisao;
+        int[] aux;
+        config.abreLeitura("config.txt");
+        config.salta("width = ".length());
+        if((aux = config.readNumber())[0] == 0){
+            width = aux[1];
+        }
+        else{
+            config.closeRead();
+            return false;
+        }
+        config.salta("height = ".length());
+        if((aux = config.readNumber())[0] == 0){
+            height = aux[1];
+        }
+        else{
+            config.closeRead();            
+            return false;
+        }
+        config.salta("lifespan = ".length());
+        if((aux = config.readNumber())[0] == 0){
+            lifespan = aux[1];
+        }
+        else{
+            config.closeRead();            
+            return false;
+        }
+        config.salta("campovisao = ".length());
+        if((aux = config.readNumber())[0] == 0){
+            campovisao = aux[1];
+        }
+        else{
+            config.closeRead();
+            return false;
+        }
+        a = new Ambiente(width,height,lifespan,campovisao);
+        config.closeRead();
+        return true;
+    }
 }

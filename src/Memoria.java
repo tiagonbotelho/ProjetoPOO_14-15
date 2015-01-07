@@ -5,7 +5,6 @@ public class Memoria {
     private ArrayList <Percepcao> memoria;
     private ArrayList <Objeto> objetos; 
     private ArrayList <Coord> walk;
-    /*TODO calcular distancia percorrida*/
 
     public Memoria(ArrayList<Percepcao> memory, ArrayList<Objeto> objects,ArrayList<Coord> walk) {
         memoria=memory;

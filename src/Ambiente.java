@@ -10,10 +10,7 @@ public class Ambiente {
     private int lifeSpan;
     private int tamanho;
     private ArrayList <Entidade> entidades;
-    
-    
-    /*TODO adicionar objetos ao ambiente*/
-    
+        
     public Ambiente(int width,int height,int lifeSpan, int campoVisao){
         this.width  = width;
         this.height = height;
