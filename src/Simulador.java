@@ -10,7 +10,7 @@ public class Simulador {
     public static Ambiente a;
     
     private static boolean protectChar(String input) {
-    	String simbols="?!.,;:-_`´^/()%&$#[]{}=+*|\"";
+    	String simbols="?!.,;:-_`´^/()%&$#[]{}=+*|\""; 
     	char [] items = input.toCharArray();
     	for(char c: items) {
     		if(Character.isLetter(c) || simbols.indexOf(c)!=-1) {
@@ -126,8 +126,8 @@ public class Simulador {
         Scanner sc = new Scanner(System.in);
         try{
             if(!init()){
-            System.out.println("Erro na busca");
-            return;
+                System.out.println("Erro na busca");
+                a = newAmbient();
             }
         }catch(FileNotFoundException e){
             System.out.println("O ficheiro config.txt não existe.");

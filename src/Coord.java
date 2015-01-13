@@ -17,6 +17,7 @@ public class Coord {
     public boolean validCoord(Ambiente a){
         if(x>0 && x<=a.getWidth()){
             if(y>0 && y<=a.getHeight()){
+                System.out.println("valid "+ x + " " + y);
                 return true;
             }
         }
@@ -33,11 +34,17 @@ public class Coord {
     
     public Coord noObjectCoord(int radius,Ambiente a){
         Random rd = new Random();
-        Coord nova = new Coord(rd.nextInt(radius*2)+ x - radius,rd.nextInt(radius*2) + y-radius);
-        while(this.distance(nova)<(double)radius/2 && nova.validCoord(a)){
-            nova.x = rd.nextInt(radius*2)+ x - radius;
-            nova.y = rd.nextInt(radius*2) + y-radius;
-        }  /* TODO test*/
+        Coord nova = new Coord(rd.nextInt(radius*2 + 1)+ x - radius,rd.nextInt(radius*2 + 1) + y-radius);
+        System.out.println("radius/2 " + (double)radius/2);
+        System.out.println("nova - " + nova);
+        System.out.println(this.distance(nova));
+        while(!nova.validCoord(a) || this.distance(nova)<(double)(radius/2) || this.distance(nova)>(double)radius){
+            nova.x = rd.nextInt(radius*2 + 1)+ x - radius;
+            nova.y = rd.nextInt(radius*2 + 1) + y - radius;
+            System.out.println("nova - " + nova);
+            System.out.println(this.distance(nova));
+        }  
+        System.out.println("aceite " + nova);
         return nova;
         
     }
