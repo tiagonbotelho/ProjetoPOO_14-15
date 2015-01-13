@@ -188,6 +188,7 @@ public class Simulador {
                 case 10:
                     distanceMenu(); break;
                 case 11:
+                	a.writeEMem();
                     try{
                         saveMenu(); 
                     }catch(IOException e){
@@ -327,7 +328,7 @@ public class Simulador {
         option1 = sc.nextInt();
         switch(option1){
             case 1:
-                a.saveAmbient();
+                //a.saveAmbient();
                 break;
             default:
                 break;

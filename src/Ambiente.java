@@ -1,5 +1,5 @@
 
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -90,6 +90,7 @@ public class Ambiente {
         }
     }
     
+    
     public void moveAgents(){ //Move todos os agentes
         Iterator <Entidade> iterador = entidades.iterator();
         while(iterador.hasNext()){
@@ -98,20 +99,6 @@ public class Ambiente {
                 ((Agente)aux).move(this);
             }
         }
-    }
-    
-    public void saveAmbient() throws IOException{
-        File configfile = new File("config.txt");
-        FicheirodeTexto config = new FicheirodeTexto();
-        if(!configfile.exists()){
-            configfile.createNewFile();
-        }
-        config.abreEscrita("config.txt");
-        config.escreveLinha("width = ".concat(Integer.toString(width)));
-        config.escreveLinha("height = ".concat(Integer.toString(height)));
-        config.escreveLinha("lifespan = ".concat(Integer.toString(lifeSpan)));
-        config.escreveLinha("campovisao = ".concat(Integer.toString(campoVisao)));
-        config.closeWrite();
     }
 
     public Entidade getEntityByID(int id){ //Devolve entidade que tenha o id passado como argumento, caso nao exista devolve null
@@ -123,13 +110,35 @@ public class Ambiente {
         return null;
     }
     
-    void printAgents(){
+    public void printAgents(){
         for(Entidade entity : entidades){
             if(entity instanceof Agente){
                 System.out.println(entity);
             }
         }
     }
+    
+  public void writeEMem(){
+	  try{
+  		FicheirodeTexto mem=new FicheirodeTexto();
+  		mem.abreEscrita("memoria.txt");
+  		ArrayList <Objeto> objt;
+  		for(Entidade aux: entidades) {
+  			if(aux instanceof Agente) {
+  				objt=((Agente) aux).getMemory().getObjetos();
+  				System.out.println(aux.toString());
+  				mem.escreveLinha(aux.toString());
+  				for(Objeto o: objt) {
+  					System.out.println(o.toString());
+  					mem.escreveLinha(o.toString());
+  				}
+  			}
+  		}
+  		mem.closeWrite();;
+  	}catch(IOException e){
+  		System.out.println("Error Writing in file");
+  	}
+   }
     
     public int getWidth() {
         return width;

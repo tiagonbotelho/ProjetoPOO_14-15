@@ -10,3 +10,5 @@ exec
 *.iml
 *.iws
 /src/Robierto/nbproject/private/
+memoria.txt
+config.txt
