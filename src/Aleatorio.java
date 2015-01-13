@@ -1,11 +1,12 @@
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * Created by tiagobotelho on 14/12/14.
  */
 
-public class Aleatorio extends Agente{
+public class Aleatorio extends Agente implements Serializable{
 
 
     public Aleatorio(String forma,String cor,Coord pos,int lifespan) {

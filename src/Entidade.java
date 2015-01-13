@@ -1,4 +1,7 @@
-public abstract class Entidade {
+
+import java.io.Serializable;
+
+public abstract class Entidade implements Serializable{
     protected int id;
     protected String forma;
     protected String cor;

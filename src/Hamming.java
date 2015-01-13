@@ -1,7 +1,8 @@
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Hamming extends Agente{
+public class Hamming extends Agente implements Serializable{
 
     public Hamming(String forma,String cor,Coord pos,int lifespan) {
         super(forma, cor, pos,lifespan);

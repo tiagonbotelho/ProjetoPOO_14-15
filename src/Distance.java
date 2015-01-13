@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Distance extends Agente{
+public class Distance extends Agente implements Serializable{
 
     public Distance(String forma,String cor,Coord pos,int lifespan) {
         super(forma, cor, pos,lifespan);

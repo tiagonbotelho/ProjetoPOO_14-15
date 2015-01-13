@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Simulador {
     
@@ -135,9 +137,11 @@ public class Simulador {
         }catch(IOException e){
             System.out.println(e);
             return;
+        } catch (ClassNotFoundException ex) {
+
         }
         System.out.println("Hello! Welcome to Robierto Simulator!");
-        a.preencheAmbiente();
+        //a.preencheAmbiente();
         loop : while(true) {
             a.updateAllPerceptions();
             System.out.println("1.Deseja mover um Agente;");
@@ -146,12 +150,13 @@ public class Simulador {
             System.out.println("4.Deseja ver a lista de objetos apreendidos pelos agentes;");
             System.out.println("5.Deseja ver todas as entidades no ambiente;");
             System.out.println("6.Deseja ver todas as posições pelo qual os robots passaram;");
-            System.out.println("7.Adicionar nova Entidade;");
+            System.out.println("7.Adicionar nova Entidade");
             System.out.println("8.Eliminar um Robot(0 para sair);");
             System.out.println("9.Deseja fazer um ambiente novo;");
             System.out.println("10.Deseja observar a distancia percorrida pelo Agente;");
             System.out.println("11.Sair");
             System.out.print("\nIntroduza a sua opcao: ");
+            System.out.println("width " + a.getWidth() + "height "+a.getHeight() +"lifespan "+ a.getLifeSpan() + "cdv " + a.getCampoVisao());
             option1=sc.nextInt();
             while(option1 > 11 && !sc.hasNextInt()) {
             	System.out.println("Opcao invalida por favor introduza uma opcao valida...");
@@ -188,9 +193,9 @@ public class Simulador {
                 case 10:
                     distanceMenu(); break;
                 case 11:
-                	a.writeEMem();
-                	a.writeEPreception();
-                	a.writeEWalk();
+                    a.writeEMem();
+                    a.writeEPreception();
+                    a.writeEWalk();
                     try{
                         saveMenu(); 
                     }catch(IOException e){
@@ -330,7 +335,7 @@ public class Simulador {
         option1 = sc.nextInt();
         switch(option1){
             case 1:
-                //a.saveAmbient();
+                a.saveAmbient();
                 break;
             default:
                 break;
@@ -338,8 +343,9 @@ public class Simulador {
         }
     }
             
-    public static boolean init() throws FileNotFoundException, IOException{
+    public static boolean init() throws FileNotFoundException, IOException, ClassNotFoundException{
         FicheirodeTexto config = new FicheirodeTexto();
+        FicheirodeObjetos entidadesfile = new FicheirodeObjetos();
         int width,height,lifespan,campovisao;
         int[] aux;
         config.abreLeitura("config.txt");
@@ -376,6 +382,19 @@ public class Simulador {
             return false;
         }
         a = new Ambiente(width,height,lifespan,campovisao);
+        try{
+            entidadesfile.abreLeitura("entidades.dat");
+            for(Entidade entidade:((Ambiente)entidadesfile.leObjeto()).getEntidades()){
+                System.out.println("TESTE"); /*TODO*/
+                if(entidade.getPos().validCoord(a)){
+                    a.addEntidade(entidade);
+                }
+            }
+            
+            entidadesfile.fechaLeitura();
+        } catch(FileNotFoundException e){
+    
+        }
         config.closeRead();
         return true;
     }

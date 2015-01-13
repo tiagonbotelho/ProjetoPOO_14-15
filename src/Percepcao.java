@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Percepcao {
+public class Percepcao implements Serializable{
 
     private ArrayList <Objeto> visao;
     

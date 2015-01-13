@@ -3,9 +3,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 
-public class FicheirodeObjetos {
+public class FicheirodeObjetos implements Serializable{
 	private ObjectInputStream iS;
 	private ObjectOutputStream oS;
 	
@@ -19,6 +20,13 @@ public class FicheirodeObjetos {
 		oS = new ObjectOutputStream(new FileOutputStream(nomeDoFicheiro));
 	}
 	
+        public Object leObjeto() throws IOException, ClassNotFoundException{
+            return iS.readObject();
+        }
+        
+        public void escreveObjeto(Object objeto) throws IOException{
+            oS.writeObject(objeto);
+        }
 	public Memoria leMemoria() throws IOException, ClassNotFoundException
 	{
 		return (Memoria) iS.readObject();
@@ -36,12 +44,12 @@ public class FicheirodeObjetos {
 	
 	public void fechaLeitura() throws IOException
 	{
-		iS.close();
+            iS.close();
 	}
 	
 	public void fechaEscrita() throws IOException
 	{
-		oS.close();
+            oS.close();
 	}
 
 }

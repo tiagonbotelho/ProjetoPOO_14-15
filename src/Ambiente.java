@@ -1,11 +1,13 @@
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class Ambiente {
+public class Ambiente implements Serializable{
     private int campoVisao;
     private int width;
     private int height;
@@ -117,7 +119,6 @@ public class Ambiente {
             }
         }
     }
-    
   public void writeEMem(){
 	  try{
   		FicheirodeTexto mem=new FicheirodeTexto();
@@ -180,7 +181,6 @@ public class Ambiente {
 		  }
 		  mem.closeWrite();
 	  }catch(IOException e) {
-		  e.printStackTrace();
 	  }
   }
   
@@ -212,6 +212,21 @@ public class Ambiente {
 		  e.printStackTrace();
 	  }
   }
+    
+
+    public void saveAmbient() throws IOException{
+        FicheirodeTexto config = new FicheirodeTexto();
+        FicheirodeObjetos entidades = new FicheirodeObjetos();
+        config.abreEscrita("config.txt");
+        config.escreveLinha("width = ".concat(Integer.toString(width)));
+        config.escreveLinha("height = ".concat(Integer.toString(height)));
+        config.escreveLinha("lifespan = ".concat(Integer.toString(lifeSpan)));
+        config.escreveLinha("campovisao = ".concat(Integer.toString(campoVisao)));
+        config.closeWrite();
+        entidades.abreEscrita("entidades.dat");
+        entidades.escreveObjeto(this);
+        entidades.fechaEscrita();
+    }
     
     public int getWidth() {
         return width;

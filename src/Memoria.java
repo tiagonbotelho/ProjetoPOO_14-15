@@ -1,7 +1,8 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Memoria {
+public class Memoria implements Serializable{
     private ArrayList <Percepcao> memoria;
     private ArrayList <Objeto> objetos; 
     private ArrayList <Coord> walk;

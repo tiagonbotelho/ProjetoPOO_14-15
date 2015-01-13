@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.*;
 
-public abstract class Agente extends Entidade{
+public abstract class Agente extends Entidade implements Serializable{
     protected Percepcao perception;
     protected Memoria memory;
     protected int lifespan;
