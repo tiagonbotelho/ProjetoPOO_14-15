@@ -131,7 +131,7 @@ public class Simulador {
             }
         }catch(FileNotFoundException e){
             System.out.println("O ficheiro config.txt não existe.");
-            return;
+            a = newAmbient();
         }catch(IOException e){
             System.out.println(e);
             return;
@@ -188,9 +188,15 @@ public class Simulador {
                 case 10:
                     distanceMenu(); break;
                 case 11:
+                    try{
+                        saveMenu(); 
+                    }catch(IOException e){
+                        System.out.println(e);
+                    }
                     break loop;
                 default:
                     System.out.println("Inválido"); break;
+                
             }
         }
     }
@@ -310,6 +316,22 @@ public class Simulador {
             case 3:
                 System.out.println("Escolha inválida");
                 break;
+        }
+    }
+    
+    private static void saveMenu() throws IOException{
+        int option1;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Deseja guardar o ambiente?");
+        System.out.println("1.Sim\t2.Não");
+        option1 = sc.nextInt();
+        switch(option1){
+            case 1:
+                a.saveAmbient();
+                break;
+            default:
+                break;
+                
         }
     }
             

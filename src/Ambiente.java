@@ -1,4 +1,6 @@
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -96,6 +98,20 @@ public class Ambiente {
                 ((Agente)aux).move(this);
             }
         }
+    }
+    
+    public void saveAmbient() throws IOException{
+        File configfile = new File("config.txt");
+        FicheirodeTexto config = new FicheirodeTexto();
+        if(!configfile.exists()){
+            configfile.createNewFile();
+        }
+        config.abreEscrita("config.txt");
+        config.escreveLinha("width = ".concat(Integer.toString(width)));
+        config.escreveLinha("height = ".concat(Integer.toString(height)));
+        config.escreveLinha("lifespan = ".concat(Integer.toString(lifeSpan)));
+        config.escreveLinha("campovisao = ".concat(Integer.toString(campoVisao)));
+        config.closeWrite();
     }
 
     public Entidade getEntityByID(int id){ //Devolve entidade que tenha o id passado como argumento, caso nao exista devolve null
