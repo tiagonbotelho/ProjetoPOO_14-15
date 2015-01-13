@@ -1,0 +1,4 @@
+width = 21
+height = 21
+lifespan = 3
+campovisao = 3
