@@ -141,11 +141,77 @@ public class Ambiente {
   				mem.escreveLinha("--------------------------------");
   			}
   		}
-  		mem.closeWrite();;
+  		mem.closeWrite();
   	}catch(IOException e){
-  		System.out.println("Error Writing in file");
+  		e.printStackTrace();
   	}
    }
+  
+  public void writeEPreception(){
+	  int count=0;
+	  try{
+		  FicheirodeTexto  mem=new FicheirodeTexto();
+		  mem.abreEscrita("preception.txt");
+		  ArrayList <Percepcao> aux;
+		  ArrayList <Objeto> obj;
+		  for(Entidade helper: entidades) {
+			  if(helper instanceof Agente) {
+				  aux=((Agente) helper).getMemory().getMemoria();
+				  if(aux.isEmpty()==false) {
+					  mem.escreveLinha(helper.toString2());
+					  mem.escreveLinha("--------------------------------------");
+					  for(Percepcao p: aux) {
+						  mem.escreveLinha("----------- P"+count+" -----------");
+						  obj=p.getVisao();
+						  for(Objeto o: obj) {
+							  mem.escreveLinha(o.toString()+"\n");
+						  }
+						  mem.escreveLinha("------------------//---------------");
+						  count++;
+					  }
+				  }
+				  else {
+					  mem.escreveLinha(helper.toString2());
+					  mem.escreveLinha("--------------------------------------");
+					  mem.escreveLinha("Perception Empty!");
+				  }
+				  mem.escreveLinha("--------------------------------------\n");
+			  }
+		  }
+		  mem.closeWrite();
+	  }catch(IOException e) {
+		  e.printStackTrace();
+	  }
+  }
+  
+  public void writeEWalk(){
+	  try{
+		  FicheirodeTexto mem= new FicheirodeTexto();
+		  mem.abreEscrita("walk.txt");
+		  ArrayList <Coord> aux;
+		  for(Entidade helper: entidades) {
+			  if(helper instanceof Agente) {
+				  aux=((Agente) helper).getMemory().getWalk();
+				  if(aux.isEmpty()==false) {
+					  mem.escreveLinha(helper.toString2());
+					  mem.escreveLinha("--------------------------------------");
+					  for(Coord c: aux) {
+						  mem.escreveLinha(c.toString());
+					  }
+				  }
+				  else{
+					  mem.escreveLinha(helper.toString2());
+					  mem.escreveLinha("--------------------------------------");
+					  mem.escreveLinha("O objeto nao andou");
+				  }
+				  mem.escreveLinha("--------------------------------------\n");
+			  }
+		  }
+		 mem.closeWrite(); 
+	  }catch(IOException e){
+		  e.printStackTrace();
+	  }
+  }
     
     public int getWidth() {
         return width;

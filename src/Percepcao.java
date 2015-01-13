@@ -31,4 +31,12 @@ public class Percepcao {
     public void setVisao(ArrayList<Objeto> n) {
         visao=n;
     }
+    
+    public String toString() {
+    	String aux="";
+    	for(Objeto o: visao) {
+    		aux.concat(o.toString());
+    	}
+    	return aux;
+    }
 }

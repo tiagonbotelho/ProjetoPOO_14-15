@@ -189,6 +189,8 @@ public class Simulador {
                     distanceMenu(); break;
                 case 11:
                 	a.writeEMem();
+                	a.writeEPreception();
+                	a.writeEWalk();
                     try{
                         saveMenu(); 
                     }catch(IOException e){
