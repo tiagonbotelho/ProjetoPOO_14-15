@@ -126,12 +126,19 @@ public class Ambiente {
   		for(Entidade aux: entidades) {
   			if(aux instanceof Agente) {
   				objt=((Agente) aux).getMemory().getObjetos();
-  				System.out.println(aux.toString());
-  				mem.escreveLinha(aux.toString());
-  				for(Objeto o: objt) {
-  					System.out.println(o.toString());
-  					mem.escreveLinha(o.toString());
+  				if(objt.isEmpty()==false){
+	  				mem.escreveLinha(aux.toString2());
+	  				mem.escreveLinha("--------------------------------");
+	  				for(Objeto o: objt) {
+	  					mem.escreveLinha(o.toString()+"\n");
+	  				}
   				}
+  				else{
+	  				mem.escreveLinha(aux.toString2());
+	  				mem.escreveLinha("--------------------------------");
+	  				mem.escreveLinha("MEMORY IS EMPTY!");	
+  				}
+  				mem.escreveLinha("--------------------------------");
   			}
   		}
   		mem.closeWrite();;

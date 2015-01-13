@@ -9,6 +9,10 @@ public class Distance extends Agente{
     public String toString() {
         return "Agente Distance:\n"+super.toString();
     }
+    
+    public String toString2() {
+    	return "Agente Distance "+super.toString2();
+    }
 
     public void move(Ambiente a) {
         Random rd = new Random();        

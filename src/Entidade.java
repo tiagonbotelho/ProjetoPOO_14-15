@@ -17,7 +17,11 @@ public abstract class Entidade {
 
     @Override
     public String toString() { /*FIXME tostrings*/
-        return "ID: "+id+" Forma: "+forma+" Cor: "+cor+ " Coordinates: "+ pos.toString();
+        return "ID: "+id+"\nForma: "+forma+" Cor: "+cor+ " Coordinates: "+ pos.toString();
+    }
+    
+    public String toString2() {
+    	return "ID:"+id+"\n[Forma:"+forma+" Cor:"+cor+"]";
     }
 
     public int addID(Ambiente a){ 

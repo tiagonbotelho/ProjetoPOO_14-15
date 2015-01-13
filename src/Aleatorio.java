@@ -15,6 +15,10 @@ public class Aleatorio extends Agente{
     public String toString() {
         return "Agente Aleatorio:\n" + super.toString();
     }
+    
+    public String toString2() {
+    	return "Agente Aleatorio "+super.toString2();
+    }
 
     public void move(Ambiente a) { //move-se para a posição de um objeto random da percepção, caso exista algum. Caso contrário vai para uma posição random do mapa
         Random rd = new Random();

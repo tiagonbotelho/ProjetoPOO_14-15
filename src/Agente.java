@@ -56,6 +56,10 @@ public abstract class Agente extends Entidade{
     public String toString(){
         return "Lifespan: " + lifespan + "\n"+ super.toString();
     }
+    
+    public String toString2(){
+    	return super.toString2();
+    }
 
     public Percepcao getPerception() {
         return perception;

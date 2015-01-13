@@ -20,7 +20,7 @@ public class Objeto extends Entidade{
     }
 
     public String toString() {
-        return "Objeto:\n"+super.toString() + "Tipo: " + tipo;
+        return "Objeto "+super.toString() + "Tipo: " + tipo;
     }
 
     public int calcHamming(Objeto compare) {

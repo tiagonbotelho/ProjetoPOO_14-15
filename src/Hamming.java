@@ -11,6 +11,10 @@ public class Hamming extends Agente{
     public String toString() {
         return "Agente Hamming:\n"+super.toString();
     }
+    
+    public String toString2() {
+    	return "Agente Hamming "+super.toString2();
+    }
 
     @Override
     public void move(Ambiente a) {
