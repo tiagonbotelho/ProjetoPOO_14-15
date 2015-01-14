@@ -1,3 +1,8 @@
+/**
+ * @author Tiago Botelho
+ * @author Pedro Belém
+ */
+
 import java.io.Serializable;
 import java.util.*;
 
@@ -12,6 +17,12 @@ public class Objeto extends Entidade implements Serializable{
         super();  
     }
     
+    /**
+     * 
+     * @param width Valor de comprimento do Ambiente correspondente
+     * @param height Valor de largura do Ambiente correspondente
+     */
+    
     public void ObjetoRandom(int width,int height){ //Coloca valores random (entre uns predefenidos)nos atributos do objeto
         Random rd = new Random();
         cor  = cores[rd.nextInt(cores.length)]; 
@@ -23,6 +34,12 @@ public class Objeto extends Entidade implements Serializable{
     public String toString() {
         return "Objeto "+super.toString() + "Tipo: " + tipo;
     }
+    
+    /**
+     * 
+     * @param compare Objeto para ser comparado com o fim de Calcular a Diferenca de Hamming
+     * @return int Retorna o valor da Diferenca de Hamming
+     */
 
     public int calcHamming(Objeto compare) {
         int hamming=0;

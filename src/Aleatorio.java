@@ -3,12 +3,18 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * Created by tiagobotelho on 14/12/14.
+ * @author Tiago Botelho
+ * @author Pedro Belém
  */
 
 public class Aleatorio extends Agente implements Serializable{
 
-
+	/**
+	 * @param forma Forma do Agente aleatório
+	 * @param cor Cor do Agente aleatório
+	 * @param pos Posicao do Agente aleatório
+	 * @param lifeSpan Tempo de vida do Agente aleatório
+	 */
     public Aleatorio(String forma,String cor,Coord pos,int lifespan) {
         super(forma,cor,pos,lifespan);
     }
@@ -20,7 +26,12 @@ public class Aleatorio extends Agente implements Serializable{
     public String toString2() {
     	return "Agente Aleatorio "+super.toString2();
     }
-
+    /**
+     * @param a Ambiente em que o Agente Aleatório atua
+     * @see noObjectCoord Quando nao tem Objeto no campo de Visao devolve uma Coordenada dentro de metade do raio do Campo de Visao
+     * @see addtoObjetos Adiciona um novo Objeto ao ArrayList
+     * @see addtoWalk Adiciona uma nova Posicao ao ArrayList das Posicoes por onde o Agente passou
+     */
     public void move(Ambiente a) { //move-se para a posição de um objeto random da percepção, caso exista algum. Caso contrário vai para uma posição random do mapa
         Random rd = new Random();
         Objeto random;

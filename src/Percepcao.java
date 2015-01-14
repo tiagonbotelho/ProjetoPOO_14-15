@@ -1,3 +1,9 @@
+
+/**
+ * @author Tiago Botelho
+ * @author Pedro Belém
+ */
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -12,10 +18,16 @@ public class Percepcao implements Serializable{
         this.visao = visao;
     }
 
+    /**
+     * 
+     * @param obj Objeto a ser inserido no ArrayList da visao
+     */
+    
     public void insereObjetoP(Objeto obj) {
         Objeto novo = obj;
         visao.add(novo);
     }
+    
     public void imprimeVisao() {
         if(visao.isEmpty()==false){
             System.out.println("Percepção: ");

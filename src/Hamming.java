@@ -1,4 +1,9 @@
 
+/**
+ * @author Tiago Botelho
+ * @author Pedro Belém
+ */
+
 import java.io.Serializable;
 import java.util.Random;
 
@@ -18,6 +23,16 @@ public class Hamming extends Agente implements Serializable{
     }
 
     @Override
+    /**
+     * @param a Ambiente em que estamos a trabalhar atualmente
+     * @see inserePercepcaoM Atualiza a Percepcao do agente correspondente
+     * @see getVisao Obtem a visao de Objetos dentro do seu Campo de Visao
+     * @see noObjectCoord Caso nao exista nenhum objeto válido no seu Campo de Visao é dada uma Posição Aleatória dentro do seu Campo de Visao
+     * @see calcHamming devolve a Diferenca de Hamming de dois Objetos
+     * @see addToObjetos Adiciona o Objeto ao ArrayList de Objetos
+     * @see addToWalk Adiciona as Coordenadas atuais ao ArrayList de Coordenadas
+     */
+    
     public void move(Ambiente a) {
     	Random rd = new Random();
     	Objeto hamm = new Objeto();

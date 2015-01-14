@@ -1,11 +1,23 @@
+/**
+ * @author Tiago Botelho
+ * @author Pedro Belém
+ */
+
 import java.io.Serializable;
 import java.util.*;
+
 
 public abstract class Agente extends Entidade implements Serializable{
     protected Percepcao perception;
     protected Memoria memory;
     protected int lifespan;
 
+    /*
+     * @param forma Forma do Agente
+     * @param cor Cor do Agente
+     * @param pos Posicao do Agente
+     * @param lifeSpan Tempo de Vida de um Agente
+     */
     public Agente(String forma,String cor,Coord pos,int lifespan){
         super(forma,cor,pos);
         perception = new Percepcao();
@@ -13,10 +25,16 @@ public abstract class Agente extends Entidade implements Serializable{
         this.lifespan = lifespan;
     }
 
-
+    /*
+     * @param a Ambiente a ser utilizado
+     */
     public void move(Ambiente a) {
     }
     
+    /*
+     *  @see Coord Usada para reallizar calculos
+     *  @return acc Valor da Distancia
+     */
     public int calcDistance() {
     	int acc=0;
     	int i=0;
@@ -41,6 +59,13 @@ public abstract class Agente extends Entidade implements Serializable{
     	return acc;
     }
 
+    /*
+     * @param a Ambiente onde estão a ser realizadas as operações
+     * @see Entidade Construtor utiliado para percorrer
+     * @see Percepcao Construtor para adicionar a adicionar novos Objetos
+     * @see inesereObjetoP Insere objetos na percepcao
+     * @see distance Metodo para calcular distancias
+     */
     public void visionCamp(Ambiente a) { //Atualiza a perception do agente
         Percepcao test = new Percepcao();
         for(Entidade e: a.getEntidades()){ //Adiciona na percepcao todos os objetos com a distancia inferior ao campodevisao e superior a 0

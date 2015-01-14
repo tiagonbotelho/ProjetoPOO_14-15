@@ -1,4 +1,7 @@
-
+/**
+ * @author Tiago Botelho
+ * @author Pedro Belém
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,6 +17,14 @@ public class Ambiente implements Serializable{
     private int lifeSpan;
     private int tamanho;
     private ArrayList <Entidade> entidades;
+    
+    /**
+     * 
+     * @param width
+     * @param height
+     * @param lifeSpan
+     * @param campoVisao
+     */
         
     public Ambiente(int width,int height,int lifeSpan, int campoVisao){
         this.width  = width;
@@ -23,6 +34,11 @@ public class Ambiente implements Serializable{
         this.entidades = new ArrayList <Entidade>();
         this.campoVisao = campoVisao;
     }
+    
+    /**
+     * @see ObjetoRandom Cria um Objeto aleatório com coordenadas limitadas pela largura e altura
+     * @see addtoEntidade Adiciona o Objeto aleatório ao ArrayList de Entidades
+     */
     
     public void preencheAmbiente(){ //Preenche 1/5 do ambiente com objetos random
         Objeto aux;
@@ -34,6 +50,13 @@ public class Ambiente implements Serializable{
             }
         }
     }
+    
+    /**
+     * 
+     * @param coord
+     * @return false
+     */
+    
     public boolean checkCoord(Coord coord){
         for(Entidade e : entidades){
             if(e instanceof Objeto){
@@ -44,6 +67,11 @@ public class Ambiente implements Serializable{
         }
         return false;
     }
+    
+    /**
+     * 
+     * @return i
+     */
 
     public int countAgents() {
         int i=0;
@@ -54,6 +82,12 @@ public class Ambiente implements Serializable{
         }
         return i;
     }
+    
+    /**
+     * 
+     * @param entidade
+     * @return boolean Sucesso ou Insucesso da Operação
+     */
     
     public boolean addEntidade(Entidade entidade){
         if(entidade instanceof Agente || this.checkCoord(entidade.getPos()) == false){ //se for agente não precisa de verificar a posição
@@ -73,6 +107,10 @@ public class Ambiente implements Serializable{
         }
     }
     
+    /**
+     * @see visionCamp Atualiza a Percepcao do Agente
+     */
+    
     public void updateAllPerceptions(){
         for(Entidade e:entidades){
             if(e instanceof Agente){
@@ -81,6 +119,10 @@ public class Ambiente implements Serializable{
         }
     }
     
+    /**
+     * 
+     * @param id Recebe o ID da Entidade Correspondente
+     */
     
     public void deleteEntity(int id){
         Iterator<Entidade> iterador = entidades.iterator();
@@ -92,6 +134,9 @@ public class Ambiente implements Serializable{
         }
     }
     
+    /**
+     * @see move Movimenta o Agente
+     */
     
     public void moveAgents(){ //Move todos os agentes
         Iterator <Entidade> iterador = entidades.iterator();
@@ -102,6 +147,13 @@ public class Ambiente implements Serializable{
             }
         }
     }
+    
+    /**
+     * 
+     * @param id ID da Entidade
+     * @return Entidade Se encontra retorna a Entidade caso contrário retorna null
+     * 
+     */
 
     public Entidade getEntityByID(int id){ //Devolve entidade que tenha o id passado como argumento, caso nao exista devolve null
         for(Entidade e:entidades){
@@ -119,6 +171,12 @@ public class Ambiente implements Serializable{
             }
         }
     }
+    
+    /**
+     * @see escreveLinha Escreve uma linha no ficheiro
+     * @see closeWrite Fecha a escrita
+     */
+    
   public void writeEMem(){
 	  try{
   		FicheirodeTexto mem=new FicheirodeTexto();
@@ -148,6 +206,11 @@ public class Ambiente implements Serializable{
   	}
    }
   
+  /**
+   * @see escreveLinha Escreve uma linha no ficheiro Correspondente
+   * @see closeWrite Fecha a Escrita no Ficheiro Correspondente
+   */
+  
   public void writeEPreception(){
 	  int count=0;
 	  try{
@@ -158,16 +221,17 @@ public class Ambiente implements Serializable{
 		  for(Entidade helper: entidades) {
 			  if(helper instanceof Agente) {
 				  aux=((Agente) helper).getMemory().getMemoria();
+				  count=1;
 				  if(aux.isEmpty()==false) {
 					  mem.escreveLinha(helper.toString2());
 					  mem.escreveLinha("--------------------------------------");
 					  for(Percepcao p: aux) {
-						  mem.escreveLinha("----------- P"+count+" -----------");
+						  mem.escreveLinha("----------- [P"+count+"] -----------");
 						  obj=p.getVisao();
 						  for(Objeto o: obj) {
 							  mem.escreveLinha(o.toString()+"\n");
 						  }
-						  mem.escreveLinha("------------------//---------------");
+						  mem.escreveLinha("----------------//-----------------");
 						  count++;
 					  }
 				  }
@@ -183,6 +247,12 @@ public class Ambiente implements Serializable{
 	  }catch(IOException e) {
 	  }
   }
+  
+  /**
+   * @see abreEsrita Abre a escrita a um ficheiro Correspondente
+   * @see escreveLinha Escreve Linha no ficheiro correspondente
+   * @see closeWrite Fecha o ficheiro correspondente para Escrita 
+   */
   
   public void writeEWalk(){
 	  try{
@@ -212,6 +282,14 @@ public class Ambiente implements Serializable{
 		  e.printStackTrace();
 	  	}
   	}
+  
+  /**
+   * @see abreEscrita Abre ficheiro correspondente para Escrita
+   * @see escreveLinha Escreve uma linha no ficheiro Correspondente
+   * @see calcDistance Calcula a distância percorrida pelo Agente
+   * @see closeWrite Fecha o ficheiro correspondente para Escrita 
+   * 
+   */
   
   public void WriteEStat(){
 	  ArrayList<Objeto>obj;
@@ -247,7 +325,13 @@ public class Ambiente implements Serializable{
 	  }
   }
     
-
+  /**
+   * @see escreveLinha Escreve uma linha no ficheiro correspondente
+   * @see abreEscrita Abre o ficheiro correspondente para escrita
+   * @see fechaEscrita Fecha o ficheiro correspondente para escrita
+   * @throws IOException
+   */
+  
     public void saveAmbient() throws IOException{
         FicheirodeTexto config = new FicheirodeTexto();
         FicheirodeObjetos entidades = new FicheirodeObjetos();

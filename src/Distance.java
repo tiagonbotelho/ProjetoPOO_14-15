@@ -15,6 +15,15 @@ public class Distance extends Agente implements Serializable{
     	return "Agente Distance "+super.toString2();
     }
 
+    /**
+     * @param a Ambiente em que estamos a trabalhar atualmente
+     * @see inserePercepcaoM Insere a Percepcao no ArrayList de memorias
+     * @see noObjectCoord Se nao exisir nenhum objeto valido no seu campo de Visão e-lhe atribuida uma nova Posicao
+     * @see distance Devolve-nos a distância entre dois objetos
+     * @see addtoObjetos Adiciona o Objeto novo ao ArrayList de Objetos
+     * @see addToWalk Adiciona a nova Coordenada ao ArrayList de Coordenadas
+     */
+    
     public void move(Ambiente a) {
         Random rd = new Random();        
         if(lifespan>=1){

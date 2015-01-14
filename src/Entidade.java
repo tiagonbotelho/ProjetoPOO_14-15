@@ -1,4 +1,9 @@
 
+/**
+ * @author Tiago Botelho
+ * @author Pedro Belém
+ */
+
 import java.io.Serializable;
 
 public abstract class Entidade implements Serializable{
@@ -27,6 +32,12 @@ public abstract class Entidade implements Serializable{
     	return "ID:"+id+"\n[Forma:"+forma+" Cor:"+cor+"]";
     }
 
+    /**
+     * 
+     * @param a Ambiente em que estamos a trabalhar atualmente
+     * @return int Retorna o novo ID da Entidade
+     */
+    
     public int addID(Ambiente a){ 
         int new_id = 1;
         for(Entidade e:a.getEntidades()){  //Percorre toda lista até encontrar um id nao utilizado

@@ -1,3 +1,9 @@
+
+/**
+ * @author Tiago Botelho
+ * @author Pedro Belém
+ */
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,6 +17,12 @@ public class Simulador {
     
     public static Ambiente a;
     
+    /**
+     * 
+     * @param input String a ser protegida
+     * @return bool Verifica se o input é válido ou não
+     */
+    
     private static boolean protectChar(String input) {
     	String simbols="?!.,;:-_`´^/()%&$#[]{}=+*|\""; 
     	char [] items = input.toCharArray();
@@ -22,6 +34,14 @@ public class Simulador {
     	}
     	return true;
     }
+    
+    /**
+     * 
+     * @param lifespan Tempo de vida do Agente que queremos criar
+     * @return Agente retorna o Agente criado na função
+     * @see addEntidade Adiciona a Entidade ao ArrayList de Entidades
+     * @see visionCamp Obseva o Campo de Visao no ambiente
+     */
 
     public static Agente criaAgente(int lifespan) {
         String forma;
@@ -87,6 +107,12 @@ public class Simulador {
             break;
         }
     }
+    
+    /**
+     * 
+     * @return Ambiente Retorna o novo ambiente que foi criado
+     * @see protectChar Protecao de inputs
+     */
 
     public static Ambiente newAmbient() {
     	
@@ -156,7 +182,6 @@ public class Simulador {
             System.out.println("10.Deseja observar a distancia percorrida pelo Agente;");
             System.out.println("11.Sair");
             System.out.print("\nIntroduza a sua opcao: ");
-            System.out.println("width " + a.getWidth() + "height "+a.getHeight() +"lifespan "+ a.getLifeSpan() + "cdv " + a.getCampoVisao());
             option1=sc.nextInt();
             while(option1 > 11 && !sc.hasNextInt()) {
             	System.out.println("Opcao invalida por favor introduza uma opcao valida...");
@@ -210,6 +235,11 @@ public class Simulador {
         }
     }
     
+    /**
+     * @see getEntitybyID Obtem uma determinada Entidade através do seu ID
+     * @see calcDistance calcula a Distancia entre dois Objetos
+     */
+    
     private static void distanceMenu() {
     	int option2;
     	int dist;
@@ -225,6 +255,11 @@ public class Simulador {
             System.out.println("Esse id não é de um agente.");
         }     
     }
+    
+    /**
+     * @see moveAgents Move os Agentes todos
+     * @see getEntitybyID Obtem uma determinada Entidade pelo seu ID
+     */
     
     private static void moveMenu() {
         int option1;
@@ -245,6 +280,11 @@ public class Simulador {
         }
     }
     
+    /**
+     * @see printAgents Imprime todos os Agentes do Ambiente
+     * @see getEntityByID Obtem uma determinada Entidade pelo seu ID
+     */
+    
     private static void visionMenu() {
         int option1;
         Scanner sc = new Scanner(System.in);
@@ -261,6 +301,12 @@ public class Simulador {
         }
     }
     
+    /**
+     * @see getEntityByID Obtem a Entidade pelo seu ID
+     * @see imprimeMemoria Imprime memoria de um determinado Agente
+     * @see printAgents Imprime a lista de Agentes
+     */
+    
     private static void memoriaMenu() {
         int option1;
         Scanner sc = new Scanner(System.in);
@@ -276,6 +322,12 @@ public class Simulador {
             }
         }
     }
+    
+    /**
+     * @see printAgents Imprime uma lista de Agentes
+     * @see getEntityByID Obtem uma determinada Entidade pelo seu ID
+     * 
+     */
     
     private static void objetosMenu() {
         int option1;
@@ -343,6 +395,14 @@ public class Simulador {
                 
         }
     }
+    
+    /**
+     * 
+     * @return boolean Retorna falso caso alguma falha na informacao do ficheiro ocorra
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
             
     public static boolean init() throws FileNotFoundException, IOException, ClassNotFoundException{
         FicheirodeTexto config = new FicheirodeTexto();
@@ -394,7 +454,7 @@ public class Simulador {
             
             entidadesfile.fechaLeitura();
         } catch(FileNotFoundException e){
-    
+        	a.preencheAmbiente();
         }
         config.closeRead();
         return true;

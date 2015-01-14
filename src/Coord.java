@@ -1,4 +1,9 @@
 
+/**
+ * @author Tiago Botelho
+ * @author Pedro Belém
+ */
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,6 +20,12 @@ public class Coord implements Serializable{
         
     }
     
+    /**
+     * 
+     * @param a Ambiente em que a simulação esta a trabalhar
+     * @return boolean Controlo de a variável se é ou não válida (true or false)
+     */
+    
     public boolean validCoord(Ambiente a){
         if(x>0 && x<=a.getWidth()){
             if(y>0 && y<=a.getHeight()){
@@ -24,6 +35,13 @@ public class Coord implements Serializable{
         }
         return false;
     }
+    
+    /**
+     * 
+     * @param nova Nova coordenada com qual vamos comparar
+     * @return double Representa a distancia obtida entre as duas Entidades
+     * @see distancia Variável à qual vamos atribuir o valor da Distância
+     */
 
     public double distance(Coord nova) { //calcula a distancia entre duas coords
         double distancia;
@@ -33,19 +51,21 @@ public class Coord implements Serializable{
         return distancia;
     }
     
+    /**
+     * 
+     * @param radius Raio de visao para sabermos os tamanhos onde podemos saltar o Agente
+     * @param a Ambiente em que estamos a trabalhar atualmente
+     * @return Coord Retorna a nova coordenada Obtida
+     */
+    
     public Coord noObjectCoord(int radius,Ambiente a){
         Random rd = new Random();
         Coord nova = new Coord(rd.nextInt(radius*2 + 1)+ x - radius,rd.nextInt(radius*2 + 1) + y-radius);
-        System.out.println("radius/2 " + (double)radius/2);
-        System.out.println("nova - " + nova);
         System.out.println(this.distance(nova));
         while(!nova.validCoord(a) || this.distance(nova)<(double)(radius/2) || this.distance(nova)>(double)radius){
             nova.x = rd.nextInt(radius*2 + 1)+ x - radius;
             nova.y = rd.nextInt(radius*2 + 1) + y - radius;
-            System.out.println("nova - " + nova);
-            System.out.println(this.distance(nova));
-        }  
-        System.out.println("aceite " + nova);
+        }
         return nova;
         
     }

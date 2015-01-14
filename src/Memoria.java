@@ -1,4 +1,7 @@
-
+/**
+ * @author Tiago Botelho
+ * @author Pedro Belém
+ */
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -19,10 +22,19 @@ public class Memoria implements Serializable{
         walk = new ArrayList<Coord>();
     }
     
+    /**
+     * 
+     * @param perception Percepcao atual adicionada ao ArrayList
+     */
+    
     public void inserePercepcaoM(Percepcao perception){
         Percepcao novo = perception;
         memoria.add(novo);
     }
+    
+    /**
+     * @see imprimeVisao Imprime a Visao do Agente atualmente
+     */
 
     public void imprimeMemoria() {
         System.out.println("----------------------MEMORY\n");
@@ -34,6 +46,12 @@ public class Memoria implements Serializable{
         System.out.println("------END MEMORY-----------");
     }
     
+    /**
+     * 
+     * @param objeto Objeto a ser comparado
+     * @return int Retorna o numero de ocorrencias do Objeto no ArrayList
+     */
+    
     public int numberOcurrences(Objeto objeto){
         int counter = 0;
         for(Objeto obj:objetos){
@@ -43,16 +61,30 @@ public class Memoria implements Serializable{
         }
         return counter;
     }
+    
+    /**
+     * 
+     * @param obj Objeto a ser adicionado ao ArrayList
+     */
 
     public void addtoObjetos(Objeto obj) {
         Objeto novo = obj;
         objetos.add(novo);
     }
     
+    /**
+     * 
+     * @param pos Posicao a ser adicionada ao ArrayList
+     */
+    
     public void addToWalk(Coord pos){
         Coord novo = new Coord(pos.getX(),pos.getY());
         walk.add(novo);
     }
+    
+    /**
+     * @see numberOcurrences Devolve o numero de ocorrencias do Objeto
+     */
 
     public void imprimeObjetos() {
         ArrayList <Objeto> aux = new ArrayList<Objeto>();
