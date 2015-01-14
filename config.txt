@@ -1,4 +1,4 @@
 width = 21
 height = 21
-lifespan = 3
+lifespan = 8
 campovisao = 3

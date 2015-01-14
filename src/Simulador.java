@@ -193,9 +193,10 @@ public class Simulador {
                 case 10:
                     distanceMenu(); break;
                 case 11:
-                    a.writeEMem();
-                    a.writeEPreception();
-                    a.writeEWalk();
+                	a.WriteEStat();
+                	a.writeEMem();
+                	a.writeEPreception();
+                	a.writeEWalk();
                     try{
                         saveMenu(); 
                     }catch(IOException e){

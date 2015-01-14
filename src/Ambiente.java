@@ -210,6 +210,40 @@ public class Ambiente implements Serializable{
 		 mem.closeWrite(); 
 	  }catch(IOException e){
 		  e.printStackTrace();
+	  	}
+  	}
+  
+  public void WriteEStat(){
+	  ArrayList<Objeto>obj;
+	  ArrayList<Objeto>size;
+	  try{
+		  FicheirodeTexto mem= new FicheirodeTexto();
+		  mem.abreEscrita("stats.txt");
+		  for(Entidade e: entidades) {
+			  if(e instanceof Agente) {
+				  mem.escreveLinha(e.toString2());
+				  mem.escreveLinha("--------------------------------------");
+				  if(((Agente) e).calcDistance()!=0){
+					  mem.escreveLinha("Distancia Percorrida: "+((Agente) e).calcDistance());
+				  }
+				  else{
+					  mem.escreveLinha("O Agente nao se deslocou");
+				  }
+				  obj=((Agente) e).getMemory().getObjetos();
+				  size=new ArrayList<Objeto>();
+				  for(Objeto o: obj) {
+					  if(size.indexOf(o)==-1){
+						  size.add(o);
+					  }
+				  }
+				  mem.escreveLinha("Numero de Objetos Diferentes: "+size.size());
+				  mem.escreveLinha("Numero de Objetos Aprendidos: "+obj.size());
+				  mem.escreveLinha("--------------------------------------\n");  
+			  }
+		  }
+		  mem.closeWrite();
+	  }catch(IOException e){
+		  e.printStackTrace();
 	  }
   }
     
