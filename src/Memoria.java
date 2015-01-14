@@ -31,21 +31,8 @@ public class Memoria implements Serializable{
         Percepcao novo = perception;
         memoria.add(novo);
     }
-    
-    /**
-     * @see imprimeVisao Imprime a Visao do Agente atualmente
-     */
 
-    public void imprimeMemoria() {
-        System.out.println("----------------------MEMORY\n");
-        for (Percepcao p : memoria) {
-            System.out.println("--------////------------");
-            p.imprimeVisao();
-            System.out.println("-------------------//--------------");
-        }
-        System.out.println("------END MEMORY-----------");
-    }
-    
+
     /**
      * 
      * @param objeto Objeto a ser comparado
@@ -85,7 +72,8 @@ public class Memoria implements Serializable{
     public String toString(){
     	String aux="";
     	for(Percepcao o: memoria) {
-            aux.concat(o.toString());
+            aux+="Percepção:\n";
+            aux+=o.toString();
     	}
     	return aux;
     }
@@ -94,25 +82,7 @@ public class Memoria implements Serializable{
      * @see numberOcurrences Devolve o numero de ocorrencias do Objeto
      */
 
-    public void imprimeObjetos() {
-        ArrayList <Objeto> aux = new ArrayList<Objeto>();
-        System.out.println("-------OBJETOS----------");
-        for (Objeto m : objetos) {
-            if(!aux.contains(m)){
-                System.out.println(m.toString());
-                System.out.println("Número de vezes: " + numberOcurrences(m));
-                aux.add(m);
-            }
-        }
-        System.out.println("---------END OBJETOS-----------");
-    }
     
-    public void printWalk(){
-        for(Coord i: walk){
-            System.out.println(i);
-        }
-    }
-
     public ArrayList<Percepcao> getMemoria() {
         return memoria;
     }

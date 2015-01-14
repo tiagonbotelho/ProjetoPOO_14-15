@@ -24,18 +24,9 @@ public class Percepcao implements Serializable{
      */
     
     public void insereObjetoP(Objeto obj) {
-        Objeto novo = obj;
-        visao.add(novo);
+        visao.add(obj);
     }
     
-    public void imprimeVisao() {
-        if(visao.isEmpty()==false){
-            System.out.println("Percepção: ");
-        }
-        for(Object o :visao) {
-            System.out.println(o.toString());
-        }
-    }
 
     public ArrayList<Objeto> getVisao() {
         return visao;
@@ -48,7 +39,7 @@ public class Percepcao implements Serializable{
     public String toString() {
     	String aux="";
     	for(Objeto o: visao) {
-    		aux.concat(o.toString());
+            aux += o.toString();
     	}
     	return aux;
     }

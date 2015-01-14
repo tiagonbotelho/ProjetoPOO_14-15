@@ -15,7 +15,6 @@ public class AddObjetFrame extends javax.swing.JFrame {
      */
     public AddObjetFrame(Ambiente a) {
         this.a = a;
-        System.out.println(a.getWidth());
         initComponents();
     }
 

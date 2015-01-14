@@ -32,6 +32,7 @@ public class Objeto extends Entidade implements Serializable{
     }
 
     public String toString() {
+        
         return "Objeto "+super.toString() + "Tipo: " + tipo;
     }
     

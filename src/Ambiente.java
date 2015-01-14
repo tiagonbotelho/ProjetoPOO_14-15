@@ -164,14 +164,6 @@ public class Ambiente implements Serializable{
         return null;
     }
     
-    public void printAgents(){
-        for(Entidade entity : entidades){
-            if(entity instanceof Agente){
-                System.out.println(entity);
-            }
-        }
-    }
-    
     /**
      * @see escreveLinha Escreve uma linha no ficheiro
      * @see closeWrite Fecha a escrita
@@ -385,13 +377,6 @@ public class Ambiente implements Serializable{
         entidades=new ArrayList<Entidade>();
         entidades=n;
     }
-
-    public void imprimeLista() {
-        for(Entidade e : entidades) {
-            System.out.println(e.toString());
-        }
-    }
-
 
     public int getCampoVisao() {
         return campoVisao;

@@ -120,9 +120,9 @@ public class MoverFrame extends javax.swing.JFrame {
         }
         else{
             agentes[pos].move(a);
+            a.updateAllPerceptions();
             jLabel1.setText("Agente movido com sucesso");
             MoverFrame novo = new MoverFrame(a);
-            a.updateAllPerceptions();
             novo.setVisible(true);
             dispose();
         }
