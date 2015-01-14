@@ -61,10 +61,21 @@ public class Coord implements Serializable{
     public Coord noObjectCoord(int radius,Ambiente a){
         Random rd = new Random();
         Coord nova = new Coord(rd.nextInt(radius*2 + 1)+ x - radius,rd.nextInt(radius*2 + 1) + y-radius);
-        System.out.println(this.distance(nova));
         while(!nova.validCoord(a) || this.distance(nova)<(double)(radius/2) || this.distance(nova)>(double)radius){
             nova.x = rd.nextInt(radius*2 + 1)+ x - radius;
             nova.y = rd.nextInt(radius*2 + 1) + y - radius;
+        }
+        if(a.getCampoVisao()<=a.getWidth() && a.getCampoVisao()<=a.getHeight()){
+            while(!nova.validCoord(a) || this.distance(nova)<(double)(radius/2) || this.distance(nova)>(double)radius){
+                nova.x = rd.nextInt(radius*2 + 1)+ x - radius;
+                nova.y = rd.nextInt(radius*2 + 1) + y - radius;
+                System.out.println("nova - " + nova);
+                System.out.println(this.distance(nova));
+            }              
+        }
+        else{
+            nova.x = rd.nextInt(a.getWidth() + 1);
+            nova.y = rd.nextInt(a.getHeight() + 1);
         }
         return nova;
         

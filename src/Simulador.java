@@ -167,8 +167,9 @@ public class Simulador {
 
         }
         System.out.println("Hello! Welcome to Robierto Simulator!");
-        //a.preencheAmbiente();
         loop : while(true) {
+            NewFrame frame = new NewFrame(a);
+            frame.setVisible(true);
             a.updateAllPerceptions();
             System.out.println("1.Deseja mover um Agente;");
             System.out.println("2.Deseja ver a memória dos agentes;");
@@ -232,6 +233,7 @@ public class Simulador {
                     System.out.println("Inválido"); break;
                 
             }
+            frame.dispose();
         }
     }
     
@@ -446,15 +448,13 @@ public class Simulador {
         try{
             entidadesfile.abreLeitura("entidades.dat");
             for(Entidade entidade:((Ambiente)entidadesfile.leObjeto()).getEntidades()){
-                System.out.println("TESTE"); /*TODO*/
                 if(entidade.getPos().validCoord(a)){
                     a.addEntidade(entidade);
                 }
             }
-            
             entidadesfile.fechaLeitura();
         } catch(FileNotFoundException e){
-        	a.preencheAmbiente();
+            a.preencheAmbiente();
         }
         config.closeRead();
         return true;

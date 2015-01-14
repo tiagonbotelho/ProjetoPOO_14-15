@@ -76,7 +76,7 @@ public class Ambiente implements Serializable{
     public int countAgents() {
         int i=0;
         for(Entidade e: entidades) {
-            if(e instanceof Objeto) {
+            if(e instanceof Agente) {
                 i++;
             }
         }

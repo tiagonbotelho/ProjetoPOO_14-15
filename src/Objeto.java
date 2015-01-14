@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Objeto extends Entidade implements Serializable{
     private String tipo;
-    private static final String tipos[] = {"Mesa","Cadeira","Lâmpada","Pessoa","Porta","Caixa"};
+    public static final String tipos[] = {"Mesa","Cadeira","Lâmpada","Pessoa","Porta","Caixa"};
     public Objeto(String forma,String cor,Coord pos,String type) {
         super(forma, cor, pos);
         tipo=type;

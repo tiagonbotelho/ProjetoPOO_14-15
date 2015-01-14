@@ -20,7 +20,7 @@ public class Aleatorio extends Agente implements Serializable{
     }
 
     public String toString() {
-        return "Agente Aleatorio:\n" + super.toString();
+        return "Agente Aleatorio: " + super.toString();
     }
     
     public String toString2() {

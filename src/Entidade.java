@@ -50,6 +50,7 @@ public abstract class Entidade implements Serializable{
         }
         return new_id; 
     }
+    
     public int getId(){
         return id;
     }

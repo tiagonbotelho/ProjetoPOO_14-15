@@ -80,7 +80,7 @@ public abstract class Agente extends Entidade implements Serializable{
     
     @Override
     public String toString(){
-        return "Lifespan: " + lifespan + "\n"+ super.toString();
+        return "ID:" + id + " LifeSpan: " + lifespan + " Coord: " + pos;
     }
     
     public String toString2(){
