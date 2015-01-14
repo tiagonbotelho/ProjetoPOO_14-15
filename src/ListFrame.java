@@ -64,8 +64,18 @@ public class ListFrame extends javax.swing.JFrame {
         });
 
         jButton3.setText("Passos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Objetos");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Sair");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -119,11 +129,21 @@ public class ListFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        textArea1.setText(agentes[jList1.getSelectedIndex()].getMemory().toString());
+        if(jList1.getSelectedIndex()!= -1){
+            textArea1.setText(agentes[jList1.getSelectedIndex()].getMemory().toString());
+        }
+        else{
+            textArea1.setText("Seleciona por favor");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        textArea1.setText(agentes[jList1.getSelectedIndex()].getPerception().toString());
+        if(jList1.getSelectedIndex()!=-1){
+            textArea1.setText(agentes[jList1.getSelectedIndex()].getPerception().toString());
+        }
+        else{
+            textArea1.setText("Seleciona por favor");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -131,6 +151,24 @@ public class ListFrame extends javax.swing.JFrame {
         novo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(jList1.getSelectedIndex()!=-1){
+            textArea1.setText(agentes[jList1.getSelectedIndex()].getMemory().getWalk().toString());
+        }
+        else{
+            textArea1.setText("Seleciona por favor");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if(jList1.getSelectedIndex()!=-1){
+            textArea1.setText(agentes[jList1.getSelectedIndex()].getMemory().getObjetos().toString());
+        }
+        else{
+            textArea1.setText("Seleciona por favor");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private String[] getAgentList(){
         int count = 0;

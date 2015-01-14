@@ -254,6 +254,7 @@ public class AddObjetFrame extends javax.swing.JFrame {
             jTextField3.setText("");
             jTextField4.setText("");
             jTextField5.setText("");
+            a.updateAllPerceptions();
         }
         else{
             jLabel6.setText("Posição já ocupada");

@@ -49,6 +49,7 @@ public class Aleatorio extends Agente implements Serializable{
                 pos.setX(random.getPos().getX());
                 pos.setY(random.getPos().getY());
             }
+            System.out.println(pos);
             memory.addToWalk(pos);
         }      
     }

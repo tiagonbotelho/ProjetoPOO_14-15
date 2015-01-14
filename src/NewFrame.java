@@ -249,6 +249,7 @@ public class NewFrame extends javax.swing.JFrame {
         a.writeEMem();
         a.writeEPreception();
         a.writeEWalk();
+        a.WriteEStat();
         try {
             a.saveAmbient();
         } catch (IOException ex) {
