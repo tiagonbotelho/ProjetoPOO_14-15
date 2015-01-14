@@ -82,6 +82,14 @@ public class Memoria implements Serializable{
         walk.add(novo);
     }
     
+    public String toString(){
+    	String aux="";
+    	for(Percepcao o: memoria) {
+    		aux.concat(o.toString());
+    	}
+    	return aux;
+    }
+    
     /**
      * @see numberOcurrences Devolve o numero de ocorrencias do Objeto
      */

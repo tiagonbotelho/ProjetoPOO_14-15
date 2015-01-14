@@ -223,7 +223,7 @@ public class AddAgenteFrame extends javax.swing.JFrame {
                 x = Integer.parseInt(jTextField3.getText());
             }
             else{
-                jLabel5.setText("X tem de estar entre os limites do ambiente. (0,"+a.getHeight()+")");
+                jLabel5.setText("X tem de estar entre os limites do ambiente. (1,"+a.getHeight()+")");
                 return;
             }
         }catch(NumberFormatException e){
@@ -235,7 +235,7 @@ public class AddAgenteFrame extends javax.swing.JFrame {
                 y = Integer.parseInt(jTextField4.getText());
             }
             else{
-                jLabel5.setText("Y tem de estar entre os limites do ambiente. (0,"+a.getHeight()+")");
+                jLabel5.setText("Y tem de estar entre os limites do ambiente. (1,"+a.getHeight()+")");
                 return;
             }
         }catch(NumberFormatException e){
