@@ -85,7 +85,7 @@ public class Memoria implements Serializable{
     public String toString(){
     	String aux="";
     	for(Percepcao o: memoria) {
-    		aux.concat(o.toString());
+            aux.concat(o.toString());
     	}
     	return aux;
     }

@@ -55,6 +55,11 @@ public class ListFrame extends javax.swing.JFrame {
         });
 
         jButton1.setText("Memória");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Perceção");
 
@@ -107,6 +112,11 @@ public class ListFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println(agentes[jList1.getSelectedIndex()].getMemory().toString());
+        jTextField1.setText(agentes[jList1.getSelectedIndex()].getMemory().toString());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private String[] getAgentList(){
         int count = 0;
         String[] agente = new String[nAgentes];
@@ -117,7 +127,6 @@ public class ListFrame extends javax.swing.JFrame {
                 count++;
             }
         }
-
         return agente;
     }
     /**
